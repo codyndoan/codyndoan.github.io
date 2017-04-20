@@ -1,13 +1,30 @@
 html, body {
     width: 100%;
     height: 100%;
-    min-width: 970px;
-    min-height: 750px;
-    background-color: black;
+    background-color: rgba(0,0,0,.9);
 }
 
+.bio {
+    top: 150px;
+    position: absolute;
+    color: grey;
+    width: 40%;
+    height: 18%;
+    padding-left: 6%;
+    //padding-right: 60%;
+    font-family: "Roboto", sans-serif;
+}
+
+.bio:hover {
+    color: white;
+}
+
+.bio-change {
+    color: transparent;
+}
 /* Header */
 .header {
+    z-index: 1;
     position: absolute;
     width: 100%;
     height: 150px;
@@ -94,11 +111,11 @@ html, body {
 /* Navigation */
 .nav-bar {
     z-index: 1;
-    position: absolute;
-    background-color: rgba(0,0,0,.90);
+    position: sticky;
+    background-color: rgba(0,0,0,.8);
     width: 100%;
-    min-width: 850px;
-    height: 75px;
+    min-height: 75px; 
+    height: 10%;
     font-family: "Roboto", sans-serif;
     font-size: 50px;
     color: white;
@@ -109,26 +126,30 @@ html, body {
 }
 
 .stick {
+  background-color: rgba(0,0,0,.9);
 	position: fixed;
 	padding-left: 50px;
 	padding-right: 50px;
 	padding-top: 5px;
-	height: 80px;
+	min-height: 80px;
+  height: 10%;
 	top: 0px;
 }
 
 .unstick {
-	position: static; //static
+	position: sticky; //static
   bottom: 0px;
 }
 
 .pic {
-    position: relative;
+    position: absolute;
     width: 50px;
     height: 0px;
     border-radius: 100px;
-    margin-bottom: .2%;
-    margin-left: 88%;
+    //margin-bottom: .2%;
+    //margin-left: 22%;
+    left: 4%;
+    top: 20%;
     -webkit-transition: height .5s;
     transition: height .5s;
 }
@@ -146,6 +167,7 @@ html, body {
     left: 47.8%;
     opacity: .5;
 }
+
 .down-btn:hover {
     cursor: pointer;
     opacity: 1;
@@ -168,18 +190,18 @@ html, body {
 /* Menu */
 .menu {
     z-index: 0;
-    position: absolute;
+    position: fixed;
     background: rgba(0,0,0, .75);
-    //width: 0%;
-    height: 90%;
-    -webkit-transition: width .5s;
-    transition: width .5s, height .5s;
+    width: 0%;
+    height: 100%;
+    -webkit-transition: width .5s, background 1s;
+    transition: width .5s, height .5s, background 1s;
 }
 
 .menu-top {
-    z-index: 0;
+    z-index: 1;
     width: 500px;
-    bottom: 75px;
+    bottom: 0%;
     /*height: 300%;*/
 }
 
@@ -192,14 +214,10 @@ html, body {
 
 .list {
     display: none;
-    position: relative;
+    position: absolute;
     margin-top: 150px;
     width: 100%;
     color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: 90px;
-    font-weight: 200;
-    margin-left: -10px;
 }
 
 .list-change {
@@ -218,6 +236,10 @@ li {
     opacity: .5;
     height: 100%;
     width: 0%;
+    font-family: "Roboto", sans-serif;
+    font-size: 90px;
+    font-weight: 200;
+    margin-left: -10px;
     -webkit-transition: width .5s;
     transition: width .5s, height .5s;
 }
@@ -243,4 +265,15 @@ li:hover {
     width: 100%;
     height: 500px;
     margin: 0;
+}
+
+.panel {
+    margin-top: -20px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.podcast-title:hover {
+    text-decoration: underline;
+    opacity: .75;
 }

@@ -30,6 +30,8 @@ $(window).scroll(function(e){
     $(".nav-bar").addClass("fadeInDown");
     $(".bg2").addClass("bg2-stick");
     $(".pic").addClass("pic-show");
+    $(".menu").css({'background': 'rgba(0,0,0, .95)'});
+    document.getElementById("arrow").src = "images/arrow-up.png";
     document.getElementById('portfolio').style.height = '225px';
   }
   if ($(this).scrollTop() < 730 && isPositionFixed){
@@ -37,6 +39,8 @@ $(window).scroll(function(e){
     $(".nav-bar").addClass("unstick");
     $(".nav-bar").removeClass("fadeInDown");
     //$(".nav-bar").addClass("fadeInUp");
+    $(".menu").css({'background': 'rgba(0,0,0, .75)'});
+    document.getElementById("arrow").src = "images/arrow-down.png";
     document.getElementById('portfolio').style.height = '150px';
   } 
 });
@@ -70,7 +74,7 @@ $(function() {
             document.getElementById('caption').innerHTML = 'welcome';
             clearInterval(interval);
         }
-        
+        $(".bio").toggleClass("bio-change");
         $(".menu").toggleClass("menu-top");
         $(".list").toggleClass("list-change");
         $(".greeting2").toggleClass("greeting2-change");
@@ -84,12 +88,20 @@ $(function() {
             clearInterval(interval);
             top_menuOpen = false;
         }
-        $(".menu").toggleClass("menu-bottom");
+        //$(".menu").toggleClass("menu-bottom");
+        
+        /* fixed menu change */
+        $(".bio").toggleClass("bio-change");
+        $(".menu").toggleClass("menu-top");
+        $(".list").toggleClass("list-change");
+        $(".greeting2").toggleClass("greeting2-change");
           
         if(bot_menuOpen) {
+            document.getElementById('caption').innerHTML = 'my stuff';
             clearInterval(interval);
             cycleColors();
         } else {
+            document.getElementById('caption').innerHTML = 'welcome';
             clearInterval(interval);
         }
         //$(".greeting2").toggleClass("greeting2-change");

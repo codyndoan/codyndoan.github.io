@@ -148,7 +148,7 @@ html, body {
     border-radius: 100px;
     //margin-bottom: .2%;
     //margin-left: 22%;
-    left: 4%;
+    left: 3%;
     top: 20%;
     -webkit-transition: height .5s;
     transition: height .5s;
@@ -238,7 +238,7 @@ li {
     font-family: "Roboto", sans-serif;
     font-size: 7vw;
     font-weight: 200;
-    margin-left: -30px;
+    margin-left: 0px;
     -webkit-transition: width .5s;
     transition: width .5s, height .5s;
 }

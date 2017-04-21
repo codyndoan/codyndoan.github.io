@@ -27,9 +27,9 @@ html, body {
     z-index: 1;
     position: absolute;
     width: 100%;
-    height: 150px;
+    height: 10%;
     font-family: "Roboto", sans-serif;
-    font-size: 100px;
+    font-size: 10vw;
     font-weight: 200;
     color: white;
     opacity: 1;   
@@ -62,7 +62,7 @@ html, body {
 .emphasis2 {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 50px;
+  font-size: 5vw;
   margin-top: 5%;
 }
 
@@ -200,7 +200,7 @@ html, body {
 
 .menu-top {
     z-index: 1;
-    width: 500px;
+    width: 48%;
     bottom: 0%;
     /*height: 300%;*/
 }
@@ -215,14 +215,13 @@ html, body {
 .list {
     display: none;
     position: absolute;
-    margin-top: 150px;
     width: 100%;
     color: white;
 }
 
 .list-change {
     display: block;
-    margin-top: 150px;
+    margin-top: 40%;
     width: 100%;
 }
 
@@ -234,12 +233,12 @@ a, a:link, a:visited, a:hover, a:focus, a:active{
 
 li {
     opacity: .5;
-    height: 100%;
     width: 0%;
+    list-style: none;
     font-family: "Roboto", sans-serif;
-    font-size: 90px;
+    font-size: 7vw;
     font-weight: 200;
-    margin-left: -10px;
+    margin-left: -30px;
     -webkit-transition: width .5s;
     transition: width .5s, height .5s;
 }
@@ -251,8 +250,9 @@ li:hover {
     font-weight: 500;
     background: yellow;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: -15px;
 }
+
 
 /* Portfolio */
 .buffer {
@@ -261,16 +261,16 @@ li:hover {
     height: 150px; 
 }
 
-.bg2 .buffer .panel {
-    width: 100%;
-    height: 500px;
-    margin: 0;
+.bg2 .panel {
+    width: 94%;
 }
 
 .panel {
-    margin-top: -20px;
-    padding-left: 100px;
-    padding-right: 100px;
+    border-radius: 25px;
+    margin-left: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 90%;
 }
 
 .podcast-title:hover {

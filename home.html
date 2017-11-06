@@ -16,7 +16,7 @@
     .center {
       background-color: rgba(0,0,0,.75);
       max-width: 20rem;
-      margin: 20% auto;
+      margin: 15% auto;
       padding: 1.5rem;
       border-radius: 1rem;
       text-align: center;
@@ -27,8 +27,35 @@
       font-size: 5rem;
       display: inline;
     }
+    #mail {
+      text-align: right;
+    }
     #greeting { 
       display: inline;
+    }
+    #contact {
+      text-align: left;
+      list-style: none;
+    }
+    #contact li {
+      display: inline-block;
+      width: 6rem;
+      margin: 1rem 1rem 1rem 1rem;
+    }
+    #contact li a {
+      color: white;
+      text-decoration: none;
+    }
+    #contact li a:hover i {
+      color: red;
+    }
+    @media only screen and (max-width: 500px) {
+      #contact li {
+        display: inline-block;
+        width: 6rem;
+        margin: 1rem 2rem 1rem 1rem;
+        
+      }
     }
   </style>
 </head>
@@ -37,9 +64,32 @@
   <section class="center">
     <h1 id="time"></h1>
     <h1 id="greeting"></h1>
+    <ul id="contact">
+      <li> 
+        <a href="https://github.com/codyndoan" >
+        <i class="fa fa-github" aria-hidden="true"></i> Github 
+        </a>
+      </li>
+      <li> 
+        <a href="https://linkedin.com/in/codyndoan" >
+        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin
+        </a>
+      </li>
+      <li> 
+        <a href="https://facebook.com" >
+        <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+        </a>
+      </li>
+      <li> 
+        <a href="https://google.com" >
+        <i class="fa fa-google-plus-square" aria-hidden="true"></i> Google 
+        </a>
+      </li>
+    </ul>
   </section>
   
   
+  <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
   <script>
     function updateBackground() {
       var now = new Date(),

@@ -194,8 +194,8 @@
     
     document.getElementById("input-task").addEventListener('keydown', function(event) {
         if (event.key === "Enter") {
-          var self = document.getElementById("input-task");
-          if (self.value != "") addTodoTask(today, self.value, true);
+          var task = document.getElementById("input-task").value.trim();
+          if (task != "") addTodoTask(today, task, true);
         }
     });
       
@@ -216,7 +216,7 @@
         self.style.opacity = .7;
         task_section.style.display = "none";
         time_section.style.display = "inherit";
-        let task = document.getElementById("input-task").value;
+        let task = document.getElementById("input-task").value.trim();
         if (task != "") addTodoTask(today, task, true);
       }
     });

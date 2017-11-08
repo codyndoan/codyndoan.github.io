@@ -28,9 +28,7 @@
       font-size: 5rem;
       display: inline;
     }
-    #input {
-      
-    }
+    
     #mail {
       text-align: right;
     }
@@ -58,7 +56,7 @@
       opacity: 1;
       text-decoration: underline;
     }
-    #todo-list {
+    .todo-list {
       text-align: left;
     }
     #add-task {
@@ -88,6 +86,7 @@
     }
     #input-task:focus:hover {
       width: 80%;
+      outline: none;
     }
     @media only screen and (max-width: 500px) {
       #contact li {
@@ -112,6 +111,12 @@
       0 {transform: translate(0,0);}
       50% {transform: translate(0,15px);}
       100% {transform: translate(0,0);}
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background-color: white;
+      opacity: .7;
     }
   </style>
 </head>
@@ -156,17 +161,12 @@
       </li>
     </ul>
   </section>
-  <section class="days">
-    <section class="center">
-      <h1 id="today">Today</h1>
-      <h7 id="date"></h7>
-      <ul id="todo-list">
-      </ul>
-    </section>
+  
+  <section id="days" class="center">
   </section>
   
   <section class="center">
-    <h1 id="today">Portfolio</h1>
+    <h1>Portfolio</h1>
     <a href="docs/CodysResume.pdf" >
       <h7>Resume</h7>
     </a>
@@ -176,11 +176,18 @@
   
   <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
   <script>
+    var prev = null;
+    var now = new Date(),
+    months = ['January','February','March','April','May','June','July', 
+              'August','September','October','November','December'],
+    today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
+    
     function addTodoTask(date, task, save) {
       var listItem = document.createElement("li");
       var taskItem = document.createTextNode(task);
       listItem.appendChild(taskItem);
-      document.getElementById("todo-list").appendChild(listItem);
+      if (document.getElementById(date) == undefined) initPreviousDay(date, prev);
+      document.getElementById(date).appendChild(listItem);
       document.getElementById("input-task").value = "";  
       if (save) {
         var tasks = JSON.parse(localStorage.getItem(date)) || [];
@@ -206,15 +213,42 @@
         task_section.style.display = "none";
         time_section.style.display = "inherit";
         let task = document.getElementById("input-task").value;
-        if (task != "") {
-          var now = new Date(),
-          months = ['January','February','March','April','May','June','July', 
-                    'August','September','October','November','December'],
-          date = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ')
-          addTodoTask(date, task, true)
-        }
+        if (task != "") addTodoTask(today, task, true)
       }
     });
+    
+    function initPreviousDay(date, prev) {
+      var now = new Date(),
+      months = ['January','February','March','April','May','June','July', 
+                'August','September','October','November','December'],
+      today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
+      
+      var h1 = document.createElement("h1");
+      h1.appendChild(document.createTextNode("Today"));
+      var section = document.createElement("section");
+      var h7 = document.createElement("h7");
+      var day = document.createTextNode(date);
+      var ul = document.createElement("ul");
+      ul.id = date;
+      ul.className = "todo-list";
+      if (today == date) section.appendChild(h1);
+      else section.appendChild(document.createElement("br"));
+      section.appendChild(h7.appendChild(day));
+      section.appendChild(document.createElement("hr"));
+      section.appendChild(document.createElement("br"));
+      section.appendChild(ul);
+      //section.className = "center";
+      return document.getElementById("days").insertBefore(section, prev);
+    }
+    
+    function init() {
+      for(var i = 0; i < localStorage.length; i++){
+        var date = localStorage.key(i);
+        var tasks = JSON.parse(localStorage.getItem(date));
+        prev = initPreviousDay(date, prev);
+        for (var x in tasks) addTodoTask(date, tasks[x], false);
+      }    
+    }
     
     function updateBackground() {
       var now = new Date(),
@@ -229,23 +263,11 @@
     
     function updateClock() {
       var now = new Date(),
-      months = ['January','February','March','April','May','June','July', 
-                'August','September','October','November','December'],
       time = now.toLocaleTimeString(), 
-      date = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' '),
       greeting = (now.getHours() < 12)?"Good morning":(now.getHours() < 15)?"Good afternoon":"Good evening";
-      
       document.getElementById('greeting').innerHTML = greeting + ", Cody.";
       document.getElementById('time').innerHTML = time.slice(0, -2);
-      document.getElementById('date').innerHTML = date;
       setTimeout(updateClock, 1000);
-    }
-    
-    function init() {
-      for(var i = 0; i < localStorage.length; i++){
-        var tasks = JSON.parse(localStorage.getItem(localStorage.key(i))) || [];
-        for (var x in tasks) addTodoTask(date, tasks[x], false);
-      }    
     }
     
     init();

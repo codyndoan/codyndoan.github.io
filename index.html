@@ -15,8 +15,8 @@
     }
     .center {
       background-color: rgba(0,0,0,.75);
-      max-width: 20rem;
-      margin: 10% auto;
+      max-width: 37rem;
+      margin: 5rem auto;
       padding: 1.5rem;
       border-radius: 1rem;
       text-align: center;
@@ -27,6 +27,9 @@
       font-weight: 800;
       font-size: 5rem;
       display: inline;
+    }
+    #input {
+      
     }
     #mail {
       text-align: right;
@@ -43,16 +46,48 @@
       width: 6rem;
       margin: 1rem 1rem 0rem 1rem;
     }
+    
     a {
       color: white;
+      opacity: .7;
+      transition: opacity .5s;
       text-decoration: none;
     }
+    
     a:hover {
-      opacity: .8;
+      opacity: 1;
       text-decoration: underline;
     }
-    #contact li a:hover i {
-      color: red;
+    #todo-list {
+      text-align: left;
+    }
+    #add-task {
+      position: fixed;
+      margin: 1rem 2rem;
+      right: 0;
+      bottom: 0;
+      color: white;
+      opacity: .7; 
+      cursor: pointer;
+      transition: opacity .5s;
+    }
+    #add-task:hover {
+      opacity: 1; 
+    }
+    #task {
+      display: none;
+    }
+    #input-task {
+      text-align: center;
+      font-weight: 800;
+      font-size: 3rem;
+      width: 70%;
+      margin-top: .45rem;
+      border-radius: 1rem;
+      transition: width .5s;
+    }
+    #input-task:focus:hover {
+      width: 80%;
     }
     @media only screen and (max-width: 500px) {
       #contact li {
@@ -61,13 +96,43 @@
         margin: 1rem 2rem 1rem 1rem;
       }
     }
+
+    .line {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        background-color: white;
+        opacity: .7;
+    }
+    .load-3 .line:nth-last-child(1) {animation: loadingC .6s .1s linear infinite;}
+    .load-3 .line:nth-last-child(2) {animation: loadingC .6s .2s linear infinite;}
+    .load-3 .line:nth-last-child(3) {animation: loadingC .6s .3s linear infinite;}
+    @keyframes loadingC {
+      0 {transform: translate(0,0);}
+      50% {transform: translate(0,15px);}
+      100% {transform: translate(0,0);}
+    }
   </style>
 </head>
 <body>
   
   <section class="center">
-    <h1 id="time"></h1>
-    <h1 id="greeting"></h1>
+    <div id="glance">
+      <h1 id="time"></h1><br>
+      <h1 id="greeting"></h1>
+    </div>
+    
+    <div id="task">
+      <input id="input-task" placeholder="I need to...">
+      <br><br>
+      <div class="load-3">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
+    </div>
+     
     <ul id="contact">
       <li> 
         <a href="https://github.com/codyndoan" >
@@ -91,10 +156,13 @@
       </li>
     </ul>
   </section>
-  
-  <section class="center">
-    <h1 id="today">Today</h1>
-    <h7 id="date"></h7>
+  <section class="days">
+    <section class="center">
+      <h1 id="today">Today</h1>
+      <h7 id="date"></h7>
+      <ul id="todo-list">
+      </ul>
+    </section>
   </section>
   
   <section class="center">
@@ -104,18 +172,61 @@
     </a>
   </section>
   
+  <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+  
   <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
   <script>
+    function addTodoTask(date, task, save) {
+      var listItem = document.createElement("li");
+      var taskItem = document.createTextNode(task);
+      listItem.appendChild(taskItem);
+      document.getElementById("todo-list").appendChild(listItem);
+      document.getElementById("input-task").value = "";  
+      if (save) {
+        var tasks = JSON.parse(localStorage.getItem(date)) || [];
+        tasks.push(task);
+        localStorage.setItem(date, JSON.stringify(tasks));
+      }
+    }
+      
+    document.getElementById("add-task").addEventListener("click", function() {
+      var task_section = document.getElementById("task");
+      var time_section = document.getElementById("glance");
+      if (this.className.indexOf("plus") > -1) {
+        this.className = "fa fa-check-circle fa-3x"
+        this.style.color = "greenyellow";
+        this.style.opacity = 1;
+        time_section.style.display = "none";
+        task_section.style.display = "inherit";
+      }
+      else {
+        this.className = "fa fa-plus-circle fa-3x"
+        this.style.color = "white";
+        this.style.opacity = .7;
+        task_section.style.display = "none";
+        time_section.style.display = "inherit";
+        let task = document.getElementById("input-task").value;
+        if (task != "") {
+          var now = new Date(),
+          months = ['January','February','March','April','May','June','July', 
+                    'August','September','October','November','December'],
+          date = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ')
+          addTodoTask(date, task, true)
+        }
+      }
+    });
+    
     function updateBackground() {
       var now = new Date(),
       images = [
-        'url("https://i.redd.it/tjyc0hk9m5wz.jpg")',
-        'url("https://i.redd.it/5vvyo4u8y8wz.jpg")',
-        'url("https://i.redd.it/ci60i6m0q5wz.jpg")'
+        'https://i.redd.it/tjyc0hk9m5wz.jpg',
+        'https://i.redd.it/5vvyo4u8y8wz.jpg',
+        'https://i.redd.it/ci60i6m0q5wz.jpg'
       ];
-      document.body.style.backgroundImage = images[now.getMinutes()%3]
+      document.body.style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")'
       setTimeout(updateBackground, 1000);
     }
+    
     function updateClock() {
       var now = new Date(),
       months = ['January','February','March','April','May','June','July', 
@@ -129,6 +240,15 @@
       document.getElementById('date').innerHTML = date;
       setTimeout(updateClock, 1000);
     }
+    
+    function init() {
+      for(var i = 0; i < localStorage.length; i++){
+        var tasks = JSON.parse(localStorage.getItem(localStorage.key(i))) || [];
+        for (var x in tasks) addTodoTask(date, tasks[x], false);
+      }    
+    }
+    
+    init();
     updateBackground();
     updateClock(); 
   </script>

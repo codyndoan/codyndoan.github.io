@@ -273,7 +273,7 @@
     function updateClock() {
       var now = new Date();
       var time = now.toLocaleTimeString();
-      var greeting = (now.getHours() < 12)?"Good morning":(now.getHours() < 15)?"Good afternoon":"Good evening";
+      var greeting = (now.getHours() < 6)?"Sweet dreams":(now.getHours() < 12)?"Good morning":(now.getHours() < 18)?"Good afternoon":"Good evening";
       document.getElementById('greeting').innerHTML = greeting + ", Cody.";
       document.getElementById('time').innerHTML = time.slice(0, -2);
       setTimeout(updateClock, 1000);

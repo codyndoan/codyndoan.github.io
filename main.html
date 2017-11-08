@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work Sans" />
+
+  <style>
+    body {
+      font-family: "Work Sans";
+      background: black no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: scroll;
+      transition: background-image 3s;
+    }
+    .center {
+      background-color: rgba(0,0,0,.75);
+      max-width: 37rem;
+      margin: 5rem auto;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      color: white;
+      z-index: 100;
+    }
+    #time {
+      font-weight: 800;
+      font-size: 5rem;
+      display: inline;
+    }
+    #greeting { 
+      display: inline;
+    }
+    #contact {
+      text-align: left;
+      list-style: none;
+    }
+    #contact li {
+      display: inline-block;
+      width: 6rem;
+      margin: 1rem 1rem 0rem 1rem;
+    }
+    a {
+      color: white;
+      opacity: .7;
+      transition: opacity .5s;
+      text-decoration: none;
+    }
+    a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .todo-list {
+      text-align: left;
+    }
+    #add-task {
+      position: fixed;
+      margin: 1rem 2rem;
+      right: 0;
+      bottom: 0;
+      color: white;
+      opacity: .7; 
+      cursor: pointer;
+      transition: opacity .5s;
+    }
+    #add-task:hover {
+      opacity: 1; 
+    }
+    #task {
+      display: none;
+    }
+    #input-task {
+      text-align: center;
+      font-weight: 200;
+      font-size: 3rem;
+      width: 70%;
+      margin-top: .45rem;
+      border-radius: 1rem;
+      transition: width .5s;
+    }
+    #input-task:focus {
+      outline: none;
+    }
+    #input-task:focus:hover {
+      width: 80%;
+      outline: none;
+    }
+    @media only screen and (max-width: 500px) {
+      #contact li {
+        display: inline-block;
+        width: 6rem;
+        margin: 1rem 2rem 1rem 1rem;
+      }
+    }
+
+    .line {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        background-color: white;
+        opacity: .7;
+    }
+    .load-3 .line:nth-last-child(1) {animation: loadingC .6s .1s linear infinite;}
+    .load-3 .line:nth-last-child(2) {animation: loadingC .6s .2s linear infinite;}
+    .load-3 .line:nth-last-child(3) {animation: loadingC .6s .3s linear infinite;}
+    @keyframes loadingC {
+      0 {transform: translate(0,0);}
+      50% {transform: translate(0,15px);}
+      100% {transform: translate(0,0);}
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background-color: white;
+      opacity: .7;
+    }
+    #email {
+      position: fixed;
+      color: white;
+      bottom: 0;
+      margin: 1rem 1rem;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <section class="center">
+    <div id="glance">
+      <h1 id="time"></h1><br>
+      <h1 id="greeting"></h1>
+    </div>
+    
+    <div id="task">
+      <input id="input-task" placeholder="I need to...">
+      <br><br>
+      <div class="load-3">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+      </div>
+      <br>
+    </div>
+     
+    <ul id="contact">
+      <li> 
+        <a href="https://github.com/codyndoan" >
+        <i class="fa fa-github" aria-hidden="true"></i> Github 
+        </a>
+      </li>
+      <li> 
+        <a href="https://linkedin.com/in/codyndoan" >
+        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin
+        </a>
+      </li>
+      <li> 
+        <a href="https://facebook.com" >
+        <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+        </a>
+      </li>
+      <li> 
+        <a href="https://google.com" >
+        <i class="fa fa-google-plus-square" aria-hidden="true"></i> Google 
+        </a>
+      </li>
+    </ul>
+  </section>
+  
+  <section id="days">
+  </section>
+  
+  <section class="center">
+    <h1>Portfolio</h1>
+    <a href="docs/CodysResume.pdf" ><h7>Resume</h7></a>
+    
+  </section>
+  
+  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top"><h7>c8doan@gmail.com</h7></a>
+  
+  <i id="add-task" class="fa fa-plus-circle fa-4x" aria-hidden="true"></i>
+  
+  <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
+  <script>
+    var prev = null;
+    var now = new Date(),
+    months = ['January','February','March','April','May','June','July', 
+              'August','September','October','November','December'],
+    today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
+    
+    function addTodoTask(date, task, save) {
+      var listItem = document.createElement("li");
+      var taskItem = document.createTextNode(task);
+      listItem.appendChild(taskItem);
+      if (document.getElementById(date) == undefined) initPreviousDay(date, prev);
+      document.getElementById(date).appendChild(listItem);
+      document.getElementById("input-task").value = "";  
+      if (save) {
+        var tasks = JSON.parse(localStorage.getItem(date)) || [];
+        tasks.push(task);
+        localStorage.setItem(date, JSON.stringify(tasks));
+      }
+    }
+    
+    document.getElementById("input-task").addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+          if (this.value != "") addTodoTask(today, this.value, true)
+        }
+    });
+      
+    document.getElementById("add-task").addEventListener("click", function() {
+      var task_section = document.getElementById("task");
+      var time_section = document.getElementById("glance");
+      if (this.className.indexOf("plus") > -1) {
+        this.className = "fa fa-check-circle fa-3x"
+        this.style.color = "greenyellow";
+        this.style.opacity = 1;
+        time_section.style.display = "none";
+        task_section.style.display = "inherit";
+      }
+      else {
+        this.className = "fa fa-plus-circle fa-3x"
+        this.style.color = "white";
+        this.style.opacity = .7;
+        task_section.style.display = "none";
+        time_section.style.display = "inherit";
+        let task = document.getElementById("input-task").value;
+        if (task != "") addTodoTask(today, task, true)
+      }
+    });
+    
+    function initPreviousDay(date, prev) {
+      var now = new Date(),
+      months = ['January','February','March','April','May','June','July', 
+                'August','September','October','November','December'],
+      today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
+      
+      var h1 = document.createElement("h1");
+      h1.appendChild(document.createTextNode("Today"));
+      var section = document.createElement("section");
+      var h7 = document.createElement("h7");
+      var day = document.createTextNode(date);
+      var ul = document.createElement("ul");
+      ul.id = date;
+      ul.className = "todo-list";
+      if (today == date) section.appendChild(h1);
+      else section.appendChild(document.createElement("br"));
+      section.appendChild(h7.appendChild(day));
+      section.appendChild(document.createElement("hr"));
+      section.appendChild(document.createElement("br"));
+      section.appendChild(ul);
+      section.appendChild(document.createElement("br"));
+      document.getElementById("days").className = "center";
+      return document.getElementById("days").insertBefore(section, prev);
+    }
+    
+    function init() {
+      for(var i = 0; i < localStorage.length; i++){
+        var date = localStorage.key(i);
+        var tasks = JSON.parse(localStorage.getItem(date));
+        prev = initPreviousDay(date, prev);
+        for (var x in tasks) addTodoTask(date, tasks[x], false);
+      }    
+    }
+    
+    function updateBackground() {
+      var now = new Date(),
+      images = [
+        'https://i.redd.it/tjyc0hk9m5wz.jpg',
+        'https://i.redd.it/5vvyo4u8y8wz.jpg',
+        'https://i.redd.it/ci60i6m0q5wz.jpg'
+      ];
+      document.body.style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")'
+      setTimeout(updateBackground, 1000);
+    }
+    
+    function updateClock() {
+      var now = new Date(),
+      time = now.toLocaleTimeString(), 
+      greeting = (now.getHours() < 12)?"Good morning":(now.getHours() < 15)?"Good afternoon":"Good evening";
+      document.getElementById('greeting').innerHTML = greeting + ", Cody.";
+      document.getElementById('time').innerHTML = time.slice(0, -2);
+      setTimeout(updateClock, 1000);
+    }
+    
+    init();
+    updateBackground();
+    updateClock(); 
+  </script>
+</body>
+</html>

@@ -266,7 +266,7 @@
         'https://i.redd.it/5vvyo4u8y8wz.jpg',
         'https://i.redd.it/ci60i6m0q5wz.jpg'
       ];
-      document.body.style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")';
+      document.body.style.backgroundImage = 'url("' + images[now.getHours()%images.length] + '")';
       setTimeout(updateBackground, 1000);
     }
     

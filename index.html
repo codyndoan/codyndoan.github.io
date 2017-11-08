@@ -21,6 +21,7 @@
       border-radius: 1rem;
       text-align: center;
       color: white;
+      z-index: 100;
     }
     #time {
       font-weight: 800;
@@ -114,6 +115,13 @@
       background-color: white;
       opacity: .7;
     }
+    #email {
+      position: fixed;
+      color: white;
+      bottom: 0;
+      margin: 1rem 1rem;
+      z-index: 0;
+    }
   </style>
 </head>
 <body>
@@ -164,12 +172,13 @@
   
   <section class="center">
     <h1>Portfolio</h1>
-    <a href="docs/CodysResume.pdf" >
-      <h7>Resume</h7>
-    </a>
+    <a href="docs/CodysResume.pdf" ><h7>Resume</h7></a>
+    
   </section>
   
-  <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top"><h7>c8doan@gmail.com</h7></a>
+  
+  <i id="add-task" class="fa fa-plus-circle fa-4x" aria-hidden="true"></i>
   
   <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
   <script>
@@ -192,6 +201,12 @@
         localStorage.setItem(date, JSON.stringify(tasks));
       }
     }
+    
+    document.getElementById("input-task").addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+          if (this.value != "") addTodoTask(today, this.value, true)
+        }
+    });
       
     document.getElementById("add-task").addEventListener("click", function() {
       var task_section = document.getElementById("task");

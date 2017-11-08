@@ -22,15 +22,10 @@
       text-align: center;
       color: white;
     }
-
     #time {
       font-weight: 800;
       font-size: 5rem;
       display: inline;
-    }
-    
-    #mail {
-      text-align: right;
     }
     #greeting { 
       display: inline;
@@ -44,14 +39,12 @@
       width: 6rem;
       margin: 1rem 1rem 0rem 1rem;
     }
-    
     a {
       color: white;
       opacity: .7;
       transition: opacity .5s;
       text-decoration: none;
     }
-    
     a:hover {
       opacity: 1;
       text-decoration: underline;
@@ -77,12 +70,15 @@
     }
     #input-task {
       text-align: center;
-      font-weight: 800;
+      font-weight: 200;
       font-size: 3rem;
       width: 70%;
       margin-top: .45rem;
       border-radius: 1rem;
       transition: width .5s;
+    }
+    #input-task:focus {
+      outline: none;
     }
     #input-task:focus:hover {
       width: 80%;
@@ -136,6 +132,7 @@
           <div class="line"></div>
           <div class="line"></div>
       </div>
+      <br>
     </div>
      
     <ul id="contact">
@@ -237,6 +234,7 @@
       section.appendChild(document.createElement("hr"));
       section.appendChild(document.createElement("br"));
       section.appendChild(ul);
+      section.appendChild(document.createElement("br"));
       //section.className = "center";
       return document.getElementById("days").insertBefore(section, prev);
     }

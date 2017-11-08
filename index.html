@@ -167,7 +167,7 @@
     </ul>
   </section>
   
-  <section id="days" class="center">
+  <section id="days">
   </section>
   
   <section class="center">
@@ -250,7 +250,7 @@
       section.appendChild(document.createElement("br"));
       section.appendChild(ul);
       section.appendChild(document.createElement("br"));
-      //section.className = "center";
+      document.getElementById("days").className = "center";
       return document.getElementById("days").insertBefore(section, prev);
     }
     

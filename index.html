@@ -16,7 +16,7 @@
       transition: background-image 3s;
     }
     .center {
-      background-color: rgba(0,0,0,.75);
+      background-color: rgba(0,0,0,.9);
       max-width: 37rem;
       margin: 5rem auto;
       padding: 1.5rem;
@@ -79,7 +79,7 @@
     #input-task {
       text-align: center;
       font-weight: 200;
-      font-size: 2.7rem;
+      font-size: 3.2rem;
       width: 70%;
       margin-top: .45rem;
       border-radius: 1rem;
@@ -171,6 +171,41 @@
       }
       .uni_long, .major_long { display: none;}
     }
+    
+    .hr-text {
+      line-height: 1em;
+      position: relative;
+      outline: 0;
+      border: 0;
+      color: black;
+      text-align: center;
+      height: 1.5em;
+      background-color: rgba(0,0,0,0);
+      opacity: 1;
+    }
+    .hr-text:before {
+      content: '';
+      background: linear-gradient(to right, transparent, white, transparent);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+    }
+    .hr-text:after {
+      content: attr(data-content);
+      position: relative;
+      display: inline-block;
+      color: black;
+      border-style: solid;
+      border-color: white;
+      border-width: 0px 0px 0px;
+      padding: 0 .5em;
+      line-height: 1.5em;
+      color: white;
+      background: linear-gradient(rgba(0,0,0,0) 50%, black 50%, black 55%, rgba(0,0,0,0) 40%);
+    }
+    
   </style>
 </head>
 <body>
@@ -216,7 +251,7 @@
   <div class="center">
     <h1><a href="docs/CodysResume.pdf" >Resume</a></h1>
     <article>
-      <hr><h7 class="section_title">Education</h7><br><br>
+      <hr class="hr-text" data-content="Education">
       <h7 class="uni_long">University of California, San Diego</h7>
       <h7 class="uni">UCSD</h7>
       <h7 class="major_long">B.S. Computer Science</h7>
@@ -241,13 +276,13 @@
       <br><br><br>
     </article>
     <article>
-      <hr><h7 class="section_title">Skills</h7><br><br>
+      <hr class="hr-text" data-content="Skills">
       <h7 class="desc"><b>Languages:</b> Java, C++, C, JavaScript, Python, HTML/CSS, Assembly</h7><br>
       <h7 class="desc"><b>Tools:</b> Node.js, Meteor, MongoDB, Vim, Git, Jupyter, Excel, jQuery</h7>
       <br><br>
     </article>
     <article>
-      <hr><h7 class="section_title">Experience</h7><br><br>
+      <hr class="hr-text" data-content="Experience">
       <h7 class="title">The Design Lab, UCSD</h7>
       <h7 class="date">May 2017 - Sept 2017</h7><br>
       <h7 class="title">Research Assistant &amp; Web Developer</h7><br>
@@ -261,7 +296,7 @@
       <p class="desc"><b>Languages/Tools:</b> Meteor, Mongo, JavaScript, HTML/CSS, Python, Human Computer Interaction</p><br>
     </article>
     <article>
-      <hr><h7 class="section_title">Projects</h7><br><br>
+      <hr class="hr-text" data-content="Projects">
       <h7 class="title">Interactive UCSD Podcast</h7>
       <h7 class="date">Nov 2016 - Jan 2017</h7><br>
       <p class="desc">Web application that gives students searchable access to on-screen text and audio from UCSD podcasts. Offered 69 courses to over 380 users.&nbsp;&nbsp;&nbsp;<a href="https://github.com/prithvin/cse110projectocr">{ View Source Code }</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a></p>

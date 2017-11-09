@@ -264,7 +264,7 @@
       <hr><h7 class="section_title">Projects</h7><br><br>
       <h7 class="title">Interactive UCSD Podcast</h7>
       <h7 class="date">Nov 2016 - Jan 2017</h7><br>
-      <p class="desc">Web application that gives students searchable access to on-screen text and audio from UCSD podcasts. Offered 69 courses to over 380 users.&nbsp;&nbsp;&nbsp;<a href="https://github.com/prithvin/cse110projectocr">{ Source Code }</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="show-demo"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a></p>
+      <p class="desc">Web application that gives students searchable access to on-screen text and audio from UCSD podcasts. Offered 69 courses to over 380 users.&nbsp;&nbsp;&nbsp;<a href="https://github.com/prithvin/cse110projectocr">{ View Source Code }</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a></p>
       <ul class="list">
         <li>Uses the Tesseract OCR engine to parse text from podcast videos.</li>
         <li>Developed a clean user interface for site’s onboarding, course selection, and podcasting pages.</li>
@@ -310,10 +310,15 @@
       var video = document.getElementById("video");
       if (video.style.height == "350px") {
         video.style.height = "0px";
-        video.src = video.src.replace("&autoplay=1", "&autoplay=0")
+        video.src = video.src.replace("&autoplay=1", "&autoplay=0");
+        video.style.marginBottom = "0px";
       } else {
         video.style.height = "350px";
         video.src += "&autoplay=1";
+        video.style.marginBottom = "20px";
+        setTimeout(function(){
+          window.scrollTo(0,document.body.scrollHeight);
+        }, 500);
       }
     });
     document.getElementById("input-task").addEventListener('keydown', function(event) {

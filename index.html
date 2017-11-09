@@ -24,6 +24,11 @@
       text-align: center;
       color: white;
     }
+    #video {
+      width: 100%;
+      height: 0px;
+      transition: height 1s, width 1s;
+    }
     #time {
       font-weight: 800;
       font-size: 5rem;
@@ -87,13 +92,6 @@
       width: 80%;
       outline: none;
     }
-    @media only screen and (max-width: 500px) {
-      #contact li {
-        display: inline-block;
-        width: 6rem;
-        margin: 1rem 2rem 1rem 1rem;
-      }
-    }
     .line {
         display: inline-block;
         width: 10px;
@@ -122,10 +120,61 @@
       bottom: 0;
       margin: 1rem 1rem;
     }
+    .section_title {
+      text-align: center;
+      float: none;
+    }
+    .title, .uni_long {
+      font-size: .8rem;
+      float: left;
+    }
+    .date, .major_long  {
+      font-size: .8rem;
+      float: right;
+    }
+    .uni, .major { display: none;}
+    
+    .courses {
+      float: right;
+      font-size: .7rem;
+      text-align: left;
+    }
+    .desc, .list {
+      text-align: left;
+      font-size: .7rem;
+    }
+
+    
+    hr {
+      width: 100%;
+    }
+    @media only screen and (max-width: 500px) {
+      #contact li {
+        display: inline-block;
+        width: 6rem;
+        margin: 1rem 2rem 1rem 1rem;
+      }
+      .courses {
+        float: left;
+        font-size: .7rem;
+        text-align: left;
+      }
+      .uni { 
+        font-size: .8rem;
+        float: left;
+        display: inherit;
+      }
+      .major { 
+        font-size: .8rem;
+        float: right;
+        display: inherit;
+      }
+      .uni_long, .major_long { display: none;}
+    }
   </style>
 </head>
 <body>
-  <section class="center">
+  <div class="center">
     <div id="glance">
       <h1 id="time"></h1><br>
       <h1 id="greeting"></h1>
@@ -162,12 +211,78 @@
         </a>
       </li>
     </ul>
-  </section>
-  <section id="days"></section>
-  <section class="center">
-    <h1>Portfolio</h1>
-    <h7><a href="docs/CodysResume.pdf" >Resume</a></h7>
-  </section>
+  </div>
+  <div id="days"></div>
+  <div class="center">
+    <h1><a href="docs/CodysResume.pdf" >Resume</a></h1>
+    <article>
+      <hr><h7 class="section_title">Education</h7><br><br>
+      <h7 class="uni_long">University of California, San Diego</h7>
+      <h7 class="uni">UCSD</h7>
+      <h7 class="major_long">B.S. Computer Science</h7>
+      <h7 class="major">Computer Science</h7>
+      <br>
+      <h7 class="title">GPA: 3.92</h7>
+      <h7 class="date">2015 - 2019</h7><br>
+      <h7 class="title">Courses:</h7>
+      <br>
+      <ul class="courses">
+        <li>Advanced Data Structures</li>
+        <li>Software Tools &amp; Techniques</li>
+      </ul>
+      <ul class="courses">
+        <li>Design &amp; Analysis of Algorithms</li>
+        <li>Object Oriented Design</li>
+      </ul>
+      <ul class="courses">
+        <li>Software Engineering</li>
+        <li>Organization &amp; Systems</li>
+      </ul>
+      <br><br><br>
+    </article>
+    <article>
+      <hr><h7 class="section_title">Skills</h7><br><br>
+      <h7 class="desc"><b>Languages:</b> Java, C++, C, JavaScript, Python, HTML/CSS, Assembly</h7><br>
+      <h7 class="desc"><b>Tools:</b> Node.js, Meteor, MongoDB, Vim, Git, Jupyter, Excel, jQuery</h7>
+      <br><br>
+    </article>
+    <article>
+      <hr><h7 class="section_title">Experience</h7><br><br>
+      <h7 class="title">The Design Lab, UCSD</h7>
+      <h7 class="date">May 2017 - Sept 2017</h7><br>
+      <h7 class="title">Research Assistant &amp; Web Developer</h7><br>
+      <p class="desc">Developer for a crowdsourced educational platform, <a href="https://gutinstinct-prod.ucsd.edu/info/">Gut Instinct</a>, that gives users the ability to ask questions about their health/lifestyle and to receive feedback from gut microbiome experts and educational videos. </p>
+      <ul class="list">
+        <li>Reduced client rendering times by over 50% (from ~18 sec) by integrating event driven, dynamic rendering of card modules.</li>
+        <li>Created python scripts to extract user and site metrics in order to run statistical analyses from Excel sheets, saving 1 hour of work per script.</li>
+        <li>Encouraged user retention by creating python scripts to send personalized emails to over 500 users on a weekly basis.</li>
+        <li>Facilitated experiment among users with 4 experimental conditions in order to study how different combinations of training and learning affect question asking.</li>
+      </ul>
+      <p class="desc"><b>Languages/Tools:</b> Meteor, Mongo, JavaScript, HTML/CSS, Python, Human Computer Interaction</p><br>
+    </article>
+    <article>
+      <hr><h7 class="section_title">Projects</h7><br><br>
+      <h7 class="title">Interactive UCSD Podcast</h7>
+      <h7 class="date">Nov 2016 - Jan 2017</h7><br>
+      <p class="desc">Web application that gives students searchable access to on-screen text and audio from UCSD podcasts. Offered 69 courses to over 380 users.&nbsp;&nbsp;&nbsp;<a href="https://github.com/prithvin/cse110projectocr">{ Source Code }</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="show-demo"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a></p>
+      <ul class="list">
+        <li>Uses the Tesseract OCR engine to parse text from podcast videos.</li>
+        <li>Developed a clean user interface for site’s onboarding, course selection, and podcasting pages.</li>
+        <li>Developed course favorites feature and logic for autocomplete of user queries with relevant keywords from course</li>
+        <li>Utilized Require.js to handle dependencies, modularize script loading, and improve performance.</li>
+      </ul>
+      <p class="desc"><b>Languages/Tools:</b> MongoDB, Express, Node.js, JavaScript, HTML/CSS, Python</p>
+      <iframe id="video" src="https://www.youtube.com/embed/UhmVjR9pNr8?start=114" frameborder="0" allowfullscreen></iframe>
+      <h7 class="title">2048 Board Game</h7>
+      <h7 class="date">Nov 2015</h7><br>
+      <p class="desc">Course JavaFX/Java GUI application recreating the famous sliding tile game by Gabriele Cirulli.</p>
+      <ul class="list">
+        <li>Developed GUI and algorithm for game board using representative integer matrices.</li>
+        <li>Board is scalable to multiple sizes and saved to disk in file.</li>
+      </ul>
+    </article>
+    
+  </div>
   <h7><a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a></h7>
   <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
   <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
@@ -191,7 +306,16 @@
         localStorage.setItem(date, JSON.stringify(tasks));
       }
     }
-    
+    document.getElementById("show-demo").addEventListener("click", function(){
+      var video = document.getElementById("video");
+      if (video.style.height == "350px") {
+        video.style.height = "0px";
+        video.src = video.src.replace("&autoplay=1", "&autoplay=0")
+      } else {
+        video.style.height = "350px";
+        video.src += "&autoplay=1";
+      }
+    });
     document.getElementById("input-task").addEventListener('keydown', function(event) {
         if (event.key === "Enter") {
           var task = document.getElementById("input-task").value.trim();
@@ -206,14 +330,12 @@
       if (self.className.indexOf("plus") > -1) {
         self.className = "fa fa-check-circle fa-3x";
         self.style.color = "greenyellow";
-        self.style.opacity = 1;
         time_section.style.display = "none";
         task_section.style.display = "inherit";
       }
       else {
         self.className = "fa fa-plus-circle fa-3x"
         self.style.color = "white";
-        self.style.opacity = .7;
         task_section.style.display = "none";
         time_section.style.display = "inherit";
         let task = document.getElementById("input-task").value.trim();

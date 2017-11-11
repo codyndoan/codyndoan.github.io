@@ -27,6 +27,8 @@
       transition: background-image 3s;
     }
     .center {
+      z-index: 1;
+      position: relative;
       background-color: rgba(0,0,0,.9);
       max-width: 37rem;
       width: 80%;
@@ -73,10 +75,12 @@
       text-align: left;
     }
     #add-task {
+      z-index: 1;
       position: fixed;
       margin: 1rem 2rem;
       right: 0;
       bottom: 0;
+      font-size: 4rem;
       color: white;
       opacity: .7; 
       cursor: pointer;
@@ -127,6 +131,7 @@
       opacity: .7;
     }
     #email {
+      z-index: 0;
       position: fixed;
       color: white;
       bottom: 0;
@@ -258,7 +263,7 @@
         </a>
       </li>
       <li> 
-        <a href="https://facebook.com" >
+        <a href="https://www.facebook.com/cynd.co" >
         <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
         </a>
       </li>
@@ -341,8 +346,8 @@
     </article>
     
   </div>
+  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>
 </div>
-<h7><a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a></h7>
 <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
 <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
 <script>
@@ -443,7 +448,7 @@
       'https://i.redd.it/5vvyo4u8y8wz.jpg',
       'https://i.redd.it/ci60i6m0q5wz.jpg'
     ];
-    document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getHours()%images.length] + '")';
+    document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")';
     setTimeout(updateBackground, 1000);
   }
 

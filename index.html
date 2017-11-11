@@ -26,7 +26,7 @@
       -webkit-overflow-scrolling: touch;
       transition: background-image 3s;
     }
-    .center {
+    .card {
       z-index: 1;
       position: relative;
       background-color: rgba(0,0,0,.9);
@@ -125,12 +125,6 @@
       50% {transform: translate(0,15px);}
       100% {transform: translate(0,0);}
     }
-    hr {
-      border: none;
-      height: 1px;
-      background-color: white;
-      opacity: .7;
-    }
     #email {
       z-index: 0;
       position: fixed;
@@ -150,8 +144,7 @@
       font-size: .8rem;
       float: right;
     }
-    .uni, .major { display: none;}
-    
+    .uni, .major {display: none;}
     .courses {
       float: right;
       font-size: .7rem;
@@ -160,11 +153,6 @@
     .desc, .list {
       text-align: left;
       font-size: .7rem;
-    }
-
-    
-    hr {
-      width: 100%;
     }
     @media only screen and (max-width: 700px) {
       #time {
@@ -196,7 +184,7 @@
         float: right;
         display: inherit;
       }
-      .uni_long, .major_long { display: none;}
+      .uni_long, .major_long {display: none;}
       #input-task {
         text-align: center;
         font-weight: 200;
@@ -207,8 +195,9 @@
         transition: width .5s;
       }
     }
-    
+
     .hr-text {
+      width: 100%;
       line-height: 1em;
       position: relative;
       outline: 0;
@@ -240,13 +229,12 @@
       line-height: 1.5em;
       color: white;
       background: linear-gradient(rgba(0,0,0,0) 50%, black 50%, black 55%, rgba(0,0,0,0) 40%);
-    }
-    
+    }   
   </style>
 </head>
 <body>
 <div id="bg">
-  <div class="center">
+  <div class="card">
     <div id="glance">
       <h1 id="time"></h1><br>
       <h1 id="greeting"></h1>
@@ -263,41 +251,31 @@
     </div>
     <ul id="contact">
       <li> 
-        <a href="https://github.com/codyndoan" >
-        <i class="fa fa-github" aria-hidden="true"></i> Github 
-        </a>
+        <a href="https://github.com/codyndoan"><i class="fa fa-github" aria-hidden="true"></i>Github</a>
       </li>
       <li> 
-        <a href="https://linkedin.com/in/codydoan" >
-        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin
-        </a>
+        <a href="https://linkedin.com/in/codydoan"><i class="fa fa-linkedin-square" aria-hidden="true"></i>Linkedin</a>
       </li>
       <li> 
-        <a href="https://www.facebook.com/cynd.co" >
-        <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
-        </a>
+        <a href="https://www.facebook.com/cynd.co"><i class="fa fa-facebook-square" aria-hidden="true"></i>Facebook</a>
       </li>
       <li> 
-        <a href="https://google.com" >
-        <i class="fa fa-google-plus-square" aria-hidden="true"></i> Google 
-        </a>
+        <a href="https://google.com"><i class="fa fa-google-plus-square" aria-hidden="true"></i>Google</a>
       </li>
     </ul>
   </div>
   <div id="days"></div>
-  <div class="center">
+  <div class="card">
     <h1><a href="docs/CodysResume.pdf" >Resume</a></h1>
     <article>
       <hr class="hr-text" data-content="Education">
       <h7 class="uni_long">University of California, San Diego</h7>
       <h7 class="uni">UC San Diego</h7>
       <h7 class="major_long">B.S. Computer Science</h7>
-      <h7 class="major">B.S. CS</h7>
-      <br>
+      <h7 class="major">B.S. CS</h7><br>
       <h7 class="title">GPA: 3.92</h7>
       <h7 class="date">2015 - 2019</h7><br>
-      <h7 class="title">Courses:</h7>
-      <br>
+      <h7 class="title">Courses:</h7><br>
       <ul class="courses">
         <li>Advanced Data Structures</li>
         <li>Software Tools &amp; Techniques</li>
@@ -334,9 +312,9 @@
     </article>
     <article>
       <hr class="hr-text" data-content="Projects">
-      <h7 class="title">Interactive UCSD Podcast</h7>
+      <h7 class="title">Interactive UCSD Podcast&nbsp;<a href="https://github.com/prithvin/cse110projectocr" target="_blank"><i class="fa fa-code" aria-hidden="true"></i></a></h7>
       <h7 class="date">Nov 2016 - Jan 2017</h7><br>
-      <p class="desc">Offered students a search tool to query topics from UCSD's podcasts. Content extracted with OCR and audio recognition linked to timestamps, allows students to jump to just the right points within a podcast. Served 69 courses to over 380 users.&nbsp;&nbsp;&nbsp;<a href="https://github.com/prithvin/cse110projectocr" target="_blank">{ View Source Code }</a></p>
+      <p class="desc">Offered students a search tool to query topics from UCSD's podcasts. Content extracted with OCR and audio recognition linked to timestamps, allows students to jump to just the right points within a podcast. Served 69 courses to over 380 users.</p>
       <ul class="list">
         <li>Uses the Tesseract OCR engine to parse text from podcast videos.</li>
         <li>Developed a clean user interface for site’s onboarding, course selection, and podcasting pages.</li>
@@ -354,7 +332,6 @@
         <li>Board is scalable to multiple sizes and saved to disk in file.</li>
       </ul>
     </article>
-    
   </div>
   <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>
 </div>
@@ -366,7 +343,6 @@
   var months = ['January','February','March','April','May','June','July', 
             'August','September','October','November','December'];
   var today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
-
   function addTodoTask(date, task, save) {
     var listItem = document.createElement("li");
     var taskItem = document.createTextNode(task);
@@ -401,7 +377,6 @@
         if (task != "") addTodoTask(today, task, true);
       }
   });
-
   document.getElementById("add-task").addEventListener("click", function() {
     var self = document.getElementById("add-task");
     var task_section = document.getElementById("task");
@@ -421,7 +396,6 @@
       if (task != "") addTodoTask(today, task, true);
     }
   });
-
   function initPreviousDay(date, prev) {   
     var h1 = document.createElement("h1");
     h1.appendChild(document.createTextNode("Today"));
@@ -433,15 +407,17 @@
     ul.className = "todo-list";
     if (today == date) section.appendChild(h1);
     else section.appendChild(document.createElement("br"));
-    section.appendChild(h7.appendChild(day));
-    section.appendChild(document.createElement("hr"));
+    //section.appendChild(h7.appendChild(day));
+    var hr = document.createElement("hr");
+    hr.className = "hr-text";
+    hr.setAttribute("data-content", date);
+    section.appendChild(hr);
     section.appendChild(document.createElement("br"));
     section.appendChild(ul);
     section.appendChild(document.createElement("br"));
-    document.getElementById("days").className = "center";
+    document.getElementById("days").className = "card";
     return document.getElementById("days").insertBefore(section, prev);
   }
-
   function init() {
     for(var i = 0; i < localStorage.length; i++){
       var date = localStorage.key(i);
@@ -450,7 +426,6 @@
       for (var x in tasks) addTodoTask(date, tasks[x], false);
     }    
   }
-
   function updateBackground() {
     var now = new Date();
     var images = [
@@ -465,7 +440,6 @@
     document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")';
     setTimeout(updateBackground, 1000);
   }
-
   function updateClock() {
     var now = new Date();
     var time = now.toLocaleTimeString();
@@ -475,7 +449,6 @@
     document.getElementById('time').innerHTML = time.replace("AM", "").replace("PM", "").replace("PST", "").replace(" ", "");
     setTimeout(updateClock, 1000);
   }
-
   init();
   updateBackground();
   updateClock(); 

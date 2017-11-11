@@ -397,22 +397,19 @@
     }
   });
   function initPreviousDay(date, prev) {   
-    var h1 = document.createElement("h1");
-    h1.appendChild(document.createTextNode("Today"));
     var section = document.createElement("section");
-    var h7 = document.createElement("h7");
-    var day = document.createTextNode(date);
+    if (today == date) {
+      var h1 = document.createElement("h1");
+      h1.appendChild(document.createTextNode("Today"));
+      section.appendChild(h1);
+    } else section.appendChild(document.createElement("br"));
     var ul = document.createElement("ul");
     ul.id = date;
     ul.className = "todo-list";
-    if (today == date) section.appendChild(h1);
-    else section.appendChild(document.createElement("br"));
-    //section.appendChild(h7.appendChild(day));
     var hr = document.createElement("hr");
     hr.className = "hr-text";
     hr.setAttribute("data-content", date);
     section.appendChild(hr);
-    section.appendChild(document.createElement("br"));
     section.appendChild(ul);
     section.appendChild(document.createElement("br"));
     document.getElementById("days").className = "card";

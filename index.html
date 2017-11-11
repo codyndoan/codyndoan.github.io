@@ -378,7 +378,7 @@
         self.style.color = "white";
         task_section.style.display = "none";
         time_section.style.display = "inherit";
-        let task = document.getElementById("input-task").value.trim();
+        var task = document.getElementById("input-task").value.trim();
         if (task != "") addTodoTask(today, task, true);
       }
     });

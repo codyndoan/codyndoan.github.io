@@ -37,11 +37,12 @@
       border-radius: 1rem;
       text-align: center;
       color: white;
+      box-shadow: 2px 3px 4px rgba(0, 0, 0, .5);
     }
     #video {
       width: 100%;
       height: 0px;
-      transition: height 1s, width 1s;
+      transition: height .5s;
     }
     #time {
       font-weight: 800;
@@ -291,7 +292,7 @@
       <h7 class="uni_long">University of California, San Diego</h7>
       <h7 class="uni">UC San Diego</h7>
       <h7 class="major_long">B.S. Computer Science</h7>
-      <h7 class="major">Computer Science</h7>
+      <h7 class="major">B.S. CS</h7>
       <br>
       <h7 class="title">GPA: 3.92</h7>
       <h7 class="date">2015 - 2019</h7><br>
@@ -343,7 +344,7 @@
         <li>Utilized Require.js to handle dependencies, modularize script loading, and improve performance.</li>
       </ul>
       <p class="desc"><b>Languages/Tools:</b> MongoDB, Express, Node.js, JavaScript, HTML/CSS, Python</p>
-      <a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a><br><br>
+      <p class="desc"><a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a><br></p>
       <iframe id="video" src="https://www.youtube.com/embed/UhmVjR9pNr8?start=114" frameborder="0" allowfullscreen></iframe>
       <h7 class="title">2048 Board Game</h7>
       <h7 class="date">Nov 2015</h7><br><br>
@@ -390,7 +391,7 @@
       video.src += "&autoplay=1";
       video.style.marginBottom = "20px";
       setTimeout(function(){
-        window.scrollTo(0,document.body.scrollHeight);
+        //document.getElementById('bg').scrollTop += 1000;
       }, 500);
     }
   });
@@ -455,7 +456,11 @@
     var images = [
       'https://i.redd.it/tjyc0hk9m5wz.jpg',
       'https://i.redd.it/5vvyo4u8y8wz.jpg',
-      'https://i.redd.it/ci60i6m0q5wz.jpg'
+      'https://i.imgur.com/lprvIce.jpg',
+      'http://i.imgur.com/jgh1fin.jpg',
+      'https://c1.staticflickr.com/5/4403/36388952880_c9d523338f_o.jpg',
+      'https://i.redd.it/a3ye33532fez.jpg',
+      'https://i.redd.it/jxfvdc5eskwz.jpg'
     ];
     document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")';
     setTimeout(updateBackground, 1000);

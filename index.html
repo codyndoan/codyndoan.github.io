@@ -166,6 +166,10 @@
         font-size: 1.5rem;
         display: inline;
       }
+      #me {
+        text-align: left;
+        font-size: .8rem;
+      }
       #contact li {
         display: inline-block;
         width: 6rem;
@@ -240,6 +244,7 @@
     <div id="glance">
       <h1 id="time"></h1><br>
       <h1 id="greeting"></h1>
+      <p id="me">I'm Cody Doan, a passionate student and engineer of code. I'm interested in solving real world problems with just the tip of my fingers.</p>
     </div>
     <div id="task">
       <input id="input-task" placeholder="I need to...">
@@ -459,7 +464,7 @@
     var time = now.toLocaleTimeString();
     var hour = now.getHours();
     var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
-    document.getElementById('greeting').innerHTML = greeting + ", Cody.";
+    document.getElementById('greeting').innerHTML = greeting + ".";
     document.getElementById('time').innerHTML = time.replace("AM", "").replace("PM", "").replace("PST", "").replace(" ", "");
     setTimeout(updateClock, 1000);
   }

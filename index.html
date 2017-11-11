@@ -22,7 +22,8 @@
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-      overflow: scroll;
+      overflow-y: scroll; 
+      -webkit-overflow-scrolling: touch;
       transition: background-image 3s;
     }
     .center {
@@ -451,7 +452,7 @@
     var hour = now.getHours();
     var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
     document.getElementById('greeting').innerHTML = greeting + ", Cody.";
-    document.getElementById('time').innerHTML = time.substring(0, time.length - 3);
+    document.getElementById('time').innerHTML = time.replace(" AM", "").replace(" PM", "");
     setTimeout(updateClock, 1000);
   }
 

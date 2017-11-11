@@ -375,7 +375,14 @@
   document.getElementById("input-task").addEventListener('keydown', function(event) {
       if (event.key === "Enter") {
         var task = document.getElementById("input-task").value.trim();
-        if (task != "") addTodoTask(today, task, true);
+        if (task != "") {
+          var order = JSON.parse(localStorage.getItem("order")) || [];
+          if (order.indexOf(today) == -1) {
+            order.push(today);
+            localStorage.setItem("order", JSON.stringify(order));
+          }
+          addTodoTask(today, task, true);
+        }
       }
   });
   document.getElementById("add-task").addEventListener("click", function() {
@@ -397,7 +404,7 @@
       if (task != "") {
         var order = JSON.parse(localStorage.getItem("order")) || [];
         if (order.indexOf(today) == -1) {
-          order.append(today);
+          order.push(today);
           localStorage.setItem("order", JSON.stringify(order));
         }
         addTodoTask(today, task, true);

@@ -8,6 +8,19 @@
     body {
       font-family: "Work Sans";
       background: black no-repeat center center fixed;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    #bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: -8px 0px 0px -8px;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
       overflow: scroll;
       transition: background-image 3s;
     }
@@ -206,6 +219,7 @@
   </style>
 </head>
 <body>
+<div id="bg">
   <div class="center">
     <div id="glance">
       <h1 id="time"></h1><br>
@@ -315,124 +329,125 @@
     </article>
     
   </div>
-  <h7><a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a></h7>
-  <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
-  <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
-  <script>
-    var prev = null;
-    var now = new Date();
-    var months = ['January','February','March','April','May','June','July', 
-              'August','September','October','November','December'];
-    var today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
-    
-    function addTodoTask(date, task, save) {
-      var listItem = document.createElement("li");
-      var taskItem = document.createTextNode(task);
-      listItem.appendChild(taskItem);
-      if (document.getElementById(date) == undefined) initPreviousDay(date, prev);
-      document.getElementById(date).appendChild(listItem);
-      document.getElementById("input-task").value = "";  
-      if (save) {
-        var tasks = JSON.parse(localStorage.getItem(date)) || [];
-        tasks.push(task);
-        localStorage.setItem(date, JSON.stringify(tasks));
-      }
+</div>
+<h7><a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a></h7>
+<i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+<script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
+<script>
+  var prev = null;
+  var now = new Date();
+  var months = ['January','February','March','April','May','June','July', 
+            'August','September','October','November','December'];
+  var today = [months[now.getMonth()], now.getDate() + ",", now.getFullYear()].join(' ');
+
+  function addTodoTask(date, task, save) {
+    var listItem = document.createElement("li");
+    var taskItem = document.createTextNode(task);
+    listItem.appendChild(taskItem);
+    if (document.getElementById(date) == undefined) initPreviousDay(date, prev);
+    document.getElementById(date).appendChild(listItem);
+    document.getElementById("input-task").value = "";  
+    if (save) {
+      var tasks = JSON.parse(localStorage.getItem(date)) || [];
+      tasks.push(task);
+      localStorage.setItem(date, JSON.stringify(tasks));
     }
-    document.getElementById("show-demo").addEventListener("click", function(){
-      var video = document.getElementById("video");
-      if (video.style.height == "350px") {
-        video.style.height = "0px";
-        video.src = video.src.replace("&autoplay=1", "");
-        video.style.marginBottom = "0px";
-      } else {
-        video.style.height = "350px";
-        video.src += "&autoplay=1";
-        video.style.marginBottom = "20px";
-        setTimeout(function(){
-          window.scrollTo(0,document.body.scrollHeight);
-        }, 500);
-      }
-    });
-    document.getElementById("input-task").addEventListener('keydown', function(event) {
-        if (event.key === "Enter") {
-          var task = document.getElementById("input-task").value.trim();
-          if (task != "") addTodoTask(today, task, true);
-        }
-    });
-      
-    document.getElementById("add-task").addEventListener("click", function() {
-      var self = document.getElementById("add-task");
-      var task_section = document.getElementById("task");
-      var time_section = document.getElementById("glance");
-      if (self.className.indexOf("plus") > -1) {
-        self.className = "fa fa-check-circle fa-3x";
-        self.style.color = "greenyellow";
-        time_section.style.display = "none";
-        task_section.style.display = "inherit";
-      }
-      else {
-        self.className = "fa fa-plus-circle fa-3x"
-        self.style.color = "white";
-        task_section.style.display = "none";
-        time_section.style.display = "inherit";
+  }
+  document.getElementById("show-demo").addEventListener("click", function(){
+    var video = document.getElementById("video");
+    if (video.style.height == "350px") {
+      video.style.height = "0px";
+      video.src = video.src.replace("&autoplay=1", "");
+      video.style.marginBottom = "0px";
+    } else {
+      video.style.height = "350px";
+      video.src += "&autoplay=1";
+      video.style.marginBottom = "20px";
+      setTimeout(function(){
+        window.scrollTo(0,document.body.scrollHeight);
+      }, 500);
+    }
+  });
+  document.getElementById("input-task").addEventListener('keydown', function(event) {
+      if (event.key === "Enter") {
         var task = document.getElementById("input-task").value.trim();
         if (task != "") addTodoTask(today, task, true);
       }
-    });
-    
-    function initPreviousDay(date, prev) {   
-      var h1 = document.createElement("h1");
-      h1.appendChild(document.createTextNode("Today"));
-      var section = document.createElement("section");
-      var h7 = document.createElement("h7");
-      var day = document.createTextNode(date);
-      var ul = document.createElement("ul");
-      ul.id = date;
-      ul.className = "todo-list";
-      if (today == date) section.appendChild(h1);
-      else section.appendChild(document.createElement("br"));
-      section.appendChild(h7.appendChild(day));
-      section.appendChild(document.createElement("hr"));
-      section.appendChild(document.createElement("br"));
-      section.appendChild(ul);
-      section.appendChild(document.createElement("br"));
-      document.getElementById("days").className = "center";
-      return document.getElementById("days").insertBefore(section, prev);
+  });
+
+  document.getElementById("add-task").addEventListener("click", function() {
+    var self = document.getElementById("add-task");
+    var task_section = document.getElementById("task");
+    var time_section = document.getElementById("glance");
+    if (self.className.indexOf("plus") > -1) {
+      self.className = "fa fa-check-circle fa-3x";
+      self.style.color = "greenyellow";
+      time_section.style.display = "none";
+      task_section.style.display = "inherit";
     }
-    
-    function init() {
-      for(var i = 0; i < localStorage.length; i++){
-        var date = localStorage.key(i);
-        var tasks = JSON.parse(localStorage.getItem(date));
-        prev = initPreviousDay(date, prev);
-        for (var x in tasks) addTodoTask(date, tasks[x], false);
-      }    
+    else {
+      self.className = "fa fa-plus-circle fa-3x"
+      self.style.color = "white";
+      task_section.style.display = "none";
+      time_section.style.display = "inherit";
+      var task = document.getElementById("input-task").value.trim();
+      if (task != "") addTodoTask(today, task, true);
     }
-    
-    function updateBackground() {
-      var now = new Date();
-      var images = [
-        'https://i.redd.it/tjyc0hk9m5wz.jpg',
-        'https://i.redd.it/5vvyo4u8y8wz.jpg',
-        'https://i.redd.it/ci60i6m0q5wz.jpg'
-      ];
-      document.body.style.backgroundImage = 'url("' + images[now.getHours()%images.length] + '")';
-      setTimeout(updateBackground, 1000);
-    }
-    
-    function updateClock() {
-      var now = new Date();
-      var time = now.toLocaleTimeString();
-      var hour = now.getHours();
-      var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
-      document.getElementById('greeting').innerHTML = greeting + ", Cody.";
-      document.getElementById('time').innerHTML = time.slice(0, -2);
-      setTimeout(updateClock, 1000);
-    }
-    
-    init();
-    updateBackground();
-    updateClock(); 
-  </script>
+  });
+
+  function initPreviousDay(date, prev) {   
+    var h1 = document.createElement("h1");
+    h1.appendChild(document.createTextNode("Today"));
+    var section = document.createElement("section");
+    var h7 = document.createElement("h7");
+    var day = document.createTextNode(date);
+    var ul = document.createElement("ul");
+    ul.id = date;
+    ul.className = "todo-list";
+    if (today == date) section.appendChild(h1);
+    else section.appendChild(document.createElement("br"));
+    section.appendChild(h7.appendChild(day));
+    section.appendChild(document.createElement("hr"));
+    section.appendChild(document.createElement("br"));
+    section.appendChild(ul);
+    section.appendChild(document.createElement("br"));
+    document.getElementById("days").className = "center";
+    return document.getElementById("days").insertBefore(section, prev);
+  }
+
+  function init() {
+    for(var i = 0; i < localStorage.length; i++){
+      var date = localStorage.key(i);
+      var tasks = JSON.parse(localStorage.getItem(date));
+      prev = initPreviousDay(date, prev);
+      for (var x in tasks) addTodoTask(date, tasks[x], false);
+    }    
+  }
+
+  function updateBackground() {
+    var now = new Date();
+    var images = [
+      'https://i.redd.it/tjyc0hk9m5wz.jpg',
+      'https://i.redd.it/5vvyo4u8y8wz.jpg',
+      'https://i.redd.it/ci60i6m0q5wz.jpg'
+    ];
+    document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getHours()%images.length] + '")';
+    setTimeout(updateBackground, 1000);
+  }
+
+  function updateClock() {
+    var now = new Date();
+    var time = now.toLocaleTimeString();
+    var hour = now.getHours();
+    var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
+    document.getElementById('greeting').innerHTML = greeting + ", Cody.";
+    document.getElementById('time').innerHTML = time.slice(0, -2);
+    setTimeout(updateClock, 1000);
+  }
+
+  init();
+  updateBackground();
+  updateClock(); 
+</script>
 </body>
 </html>

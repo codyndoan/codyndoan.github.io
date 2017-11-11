@@ -100,6 +100,7 @@
       width: 70%;
       margin-top: .45rem;
       border-radius: 1rem;
+      border-width: 0px;
       transition: width .5s;
     }
     #input-task:focus {
@@ -393,7 +394,14 @@
       task_section.style.display = "none";
       time_section.style.display = "inherit";
       var task = document.getElementById("input-task").value.trim();
-      if (task != "") addTodoTask(today, task, true);
+      if (task != "") {
+        var order = JSON.parse(localStorage.getItem("order")) || [];
+        if (order.indexOf(today) == -1) {
+          order.append(today);
+          localStorage.setItem("order", JSON.stringify(order));
+        }
+        addTodoTask(today, task, true);
+      }
     }
   });
   function initPreviousDay(date, prev) {   
@@ -416,8 +424,9 @@
     return document.getElementById("days").insertBefore(section, prev);
   }
   function init() {
-    for(var i = 0; i < localStorage.length; i++){
-      var date = localStorage.key(i);
+    var order = JSON.parse(localStorage.getItem("order")) || [];
+    for(var i = 0; i < order.length; i++){
+      var date = order[i];
       var tasks = JSON.parse(localStorage.getItem(date));
       prev = initPreviousDay(date, prev);
       for (var x in tasks) addTodoTask(date, tasks[x], false);

@@ -42,7 +42,9 @@
     #video {
       width: 100%;
       height: 0px;
-      transition: height .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      transition: all .5s;
     }
     #time {
       font-weight: 800;
@@ -69,7 +71,6 @@
     }
     a:hover {
       opacity: 1;
-      text-decoration: underline;
       cursor: pointer;
     }
     .todo-list {
@@ -99,7 +100,7 @@
       font-size: 3.2rem;
       width: 70%;
       margin-top: .45rem;
-      border-radius: 1rem;
+      border-radius: .8rem;
       border-width: 0px;
       transition: width .5s;
     }
@@ -192,7 +193,7 @@
         font-size: 1.8rem;
         width: 70%;
         margin-top: .45rem;
-        border-radius: 1rem;
+        border-radius: .5rem;
         transition: width .5s;
       }
     }
@@ -313,9 +314,9 @@
     </article>
     <article>
       <hr class="hr-text" data-content="Projects">
-      <h7 class="title">Interactive UCSD Podcast&nbsp;<a href="https://github.com/prithvin/cse110projectocr" target="_blank"><i class="fa fa-code" aria-hidden="true"></i></a></h7>
+      <h7 class="title">Interactive Podcasts&nbsp;<a href="https://github.com/prithvin/cse110projectocr" target="_blank"><i class="fa fa-code" aria-hidden="true"></i></a></h7>
       <h7 class="date">Nov 2016 - Jan 2017</h7><br>
-      <p class="desc">Offered students a search tool to query topics from UCSD's podcasts. Content extracted with OCR and audio recognition linked to timestamps, allows students to jump to just the right points within a podcast. Served 69 courses to over 380 users.</p>
+      <p class="desc">Offered students a web platform that allowed querying of topics from UCSD's podcasts (scoped by course). Content extracted with OCR and audio recognition linked to timestamps, allowed students to jump to just the right points within a podcast. Served 69 courses to over 380 users.</p>
       <ul class="list">
         <li>Uses the Tesseract OCR engine to parse text from podcast videos.</li>
         <li>Developed a clean user interface for site’s onboarding, course selection, and podcasting pages.</li>

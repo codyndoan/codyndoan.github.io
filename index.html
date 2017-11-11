@@ -450,7 +450,7 @@
       'https://i.redd.it/a3ye33532fez.jpg',
       'https://i.redd.it/jxfvdc5eskwz.jpg'
     ];
-    document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getMinutes()%images.length] + '")';
+    document.getElementById("bg").style.backgroundImage = 'url("' + images[now.getHours()%images.length] + '")';
     setTimeout(updateBackground, 1000);
   }
   function updateClock() {

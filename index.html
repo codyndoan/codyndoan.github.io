@@ -452,7 +452,7 @@
     var hour = now.getHours();
     var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
     document.getElementById('greeting').innerHTML = greeting + ", Cody.";
-    document.getElementById('time').innerHTML = time.replace(" AM", "").replace(" PM", "");
+    document.getElementById('time').innerHTML = time.replace("AM", "").replace("PM", "").replace("PST", "").replace(" ", "");
     setTimeout(updateClock, 1000);
   }
 

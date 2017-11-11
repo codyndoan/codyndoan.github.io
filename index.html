@@ -274,7 +274,7 @@
     <article>
       <hr class="hr-text" data-content="Education">
       <h7 class="uni_long">University of California, San Diego</h7>
-      <h7 class="uni">UCSD</h7>
+      <h7 class="uni">UC San Diego</h7>
       <h7 class="major_long">B.S. Computer Science</h7>
       <h7 class="major">Computer Science</h7>
       <br>
@@ -451,7 +451,7 @@
     var hour = now.getHours();
     var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
     document.getElementById('greeting').innerHTML = greeting + ", Cody.";
-    document.getElementById('time').innerHTML = time.slice(0, -2);
+    document.getElementById('time').innerHTML = time.substring(0, time.length - 3);
     setTimeout(updateClock, 1000);
   }
 

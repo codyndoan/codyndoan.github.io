@@ -359,6 +359,15 @@
 <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
 <script src="https://use.fontawesome.com/2c9e119ca7.js"></script>
 <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
   var prev = null;
   var now = new Date();
   var months = ['January','February','March','April','May','June','July', 

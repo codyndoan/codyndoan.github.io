@@ -5,7 +5,7 @@ const cacheFiles = [
   // HTML Files
     '/',
     '/index.html',
-    '/external-assets/font-awesome.min.css'
+    '/font-awesome/css/font-awesome.min.css'
 ];
 // Service Worker Install Event
 self.addEventListener('install', function(event) {

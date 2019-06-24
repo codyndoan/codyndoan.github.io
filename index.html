@@ -31,7 +31,7 @@
       z-index: 1;
       position: relative;
       background-color: rgba(0,0,0,.9);
-      max-width: 37rem;
+      max-width:50rem;
       width: 80%;
       margin: 5rem auto;
       padding: 1.5rem;
@@ -62,6 +62,7 @@
     #contact {
       text-align: left;
       list-style: none;
+      padding: 0 25%;
     }
     #contact li {
       display: inline-block;
@@ -145,22 +146,25 @@
       float: none;
     }
     .title, .uni_long {
-      font-size: .9rem;
+      font-size: 1rem;
       float: left;
     }
     .date, .major_long  {
-      font-size: .9rem;
+      font-size: .8rem;
       float: right;
     }
     .uni, .major {display: none;}
+    .course_sec {
+      float:left;      
+    }
     .courses {
-      float: right;
-      font-size: .7rem;
+      display: inline-grid;
+      font-size: .8rem;
       text-align: left;
     }
     .desc, .list {
       text-align: left;
-      font-size: .7rem;
+      font-size: .8rem;
     }
     @media only screen and (max-width: 700px) {
       #time {
@@ -173,15 +177,19 @@
         display: inline;
       }
       #me {
-        display: none;
         text-align: left;
         font-size: .8rem;
+        padding: 0rem 0rem;
 
       }
+      #contact {
+        text-align: left;
+        list-style: none;
+        padding: 0 10%;
+      }
       #contact li {
-        display: inline-block;
-        width: 6rem;
-        margin: 1rem 2.5rem 1rem 0rem;
+        display: inline;
+        font-size: .8rem;
       }
       .courses {
         float: left;
@@ -250,7 +258,11 @@
       line-height: 1.5em;
       color: white;
       background: linear-gradient(rgba(0,0,0,0) 50%, black 50%, black 55%, rgba(0,0,0,0) 40%);
-    }   
+    }
+    img {
+      max-width: 100%;
+      height: auto; 
+    }
   </style>
 </head>
 <body>
@@ -259,7 +271,7 @@
     <div id="glance">
       <h1 id="time"></h1><br>
       <h1 id="greeting"></h1>
-      <p id="me">I'm Cody Doan, a passionate student and engineer of code. I'm interested in solving real world problems with just the tip of my fingers.</p>
+      
     </div>
     <div id="task">
       <input id="input-task" placeholder="I need to...">
@@ -281,56 +293,67 @@
       <li> 
         <a href="https://www.facebook.com/cynd.co" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a>
       </li>
-      <li> 
-        <a href="https://google.com" target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Google</a>
-      </li>
     </ul>
+    <p id="me">I'm passionate about software engineering and solving real world problems with just the tip of my fingers.</p>
   </div>
   <div id="days"></div>
   <div class="card">
-    <h1><a href="docs/CodysResume.pdf" >Resume</a></h1>
+    <h1><a href="docs/CodyDoan.pdf" >Resume</a></h1>
     <article>
       <hr class="hr-text" data-content="Education">
       <h7 class="uni_long">University of California, San Diego</h7>
       <h7 class="uni">UC San Diego</h7>
       <h7 class="major_long">B.S. Computer Science</h7>
       <h7 class="major">B.S. CS</h7><br>
-      <h7 class="title">GPA: 3.92</h7>
-      <h7 class="date">2015 - 2019</h7><br>
+      <h7 class="title">GPA: 3.90</h7>
+      <h7 class="date">Sept 2015 - Dec 2018</h7><br>
       <h7 class="title">Courses:</h7><br>
-      <ul class="courses">
-        <li>Advanced Data Structures</li>
-        <li>Software Tools &amp; Techniques</li>
-      </ul>
-      <ul class="courses">
-        <li>Design &amp; Analysis of Algorithms</li>
-        <li>Object Oriented Design</li>
-      </ul>
-      <ul class="courses">
-        <li>Software Engineering</li>
-        <li>Organization &amp; Systems</li>
-      </ul>
+      <div class = "course_sec">
+          <ul class="courses">
+            <li>Advanced Data Structures</li>
+            <li>Computer Security</li>
+          </ul>
+          <ul class="courses">
+            <li>Design &amp; Analysis of Algorithms</li>
+            <li>Networked Services</li>
+          </ul>
+          <ul class="courses">
+            <li>Software Engineering</li>
+            <li>A.I. Stats Approach</li>
+          </ul>
+      </div>
       <br><br><br>
     </article>
     <article>
       <hr class="hr-text" data-content="Skills">
-      <h7 class="desc"><b>Languages:</b> Java, C++, C, JavaScript, Python, HTML/CSS, Assembly</h7><br>
-      <h7 class="desc"><b>Tools:</b> Node.js, Meteor, MongoDB, Vim, Git, Jupyter, Excel, jQuery</h7>
+      <h7 class="desc"><b>Languages:</b> Python, C++, C, Java, JavaScript, HTML/CSS, Assembly</h7><br>
+      <h7 class="desc"><b>Tools:</b> Linux, Git, Jupyter, Node.js, Meteor, MongoDB, PostgreSQL, Vi, Wireshark</h7>
       <br><br>
     </article>
     <article>
       <hr class="hr-text" data-content="Experience">
+      <h7 class="title">Viasat, Carlsbad, CA</h7>
+      <h7 class="date">June 2018 - Sept 2018</h7><br>
+      <h7 class="title">Software Engineering Intern</h7><br>
+      <p class="desc">Applied machine learning models to detect anomalous and potentially malicious network behavior from IoT devices.</p>
+      <ul class="list">
+        <li>Created adaptive NetFlow based profile in order to determine connectivity and interaction of devices on network.</li>
+        <li>Created web-based dashboard to showcase detection of anomalies among devices through alerts.</li>
+        <li>Packaged web application and network monitoring system into rpm for ease of deployment.</li>
+        <li>Crafted datasets by collecting from live IoT devices and injecting anomalous activity.</li>
+      </ul>
+      <p class="desc"><b>Skills:</b> Python, Bash, JavaScript, HTML/CSS, PostgreSQL, Django, Wireshark, Networks, Security</p><br>
       <h7 class="title">The Design Lab, UCSD</h7>
-      <h7 class="date">May 2017 - Sept 2017</h7><br>
+      <h7 class="date">June 2017 - Sept 2017</h7><br>
       <h7 class="title">Research Assistant &amp; Web Developer</h7><br>
       <p class="desc">Developer for the crowdsourced educational platform, <a href="https://gutinstinct-prod.ucsd.edu/info/" target="_blank">Gut Instinct</a>.</p>
       <ul class="list">
-        <li>Reduced client rendering times by over 50% (from ~18 sec).</li>
-        <li>Created python scripts to extract user and site metrics, saving 1 hour of work per script.</li>
-        <li>Encouraged user retention by distributing custom emails to over 500 users on a weekly basis.</li>
+        <li>Reduced client rendering times by over 50% by integrating event driven, dynamic rendering of card modules.</li>
+        <li>Created python scripts to extract user and site metrics into Excel sheets, saving time for analysts.</li>
+        <li>Encouraged user retention by creating scripts to send personalized emails to over 500 users on a weekly basis.</li>
         <li>Facilitated content experiments by serving different site versions.</li>
       </ul>
-      <p class="desc"><b>Languages/Tools:</b> Meteor, Mongo, JavaScript, HTML/CSS, Python, Human Computer Interaction</p><br>
+      <p class="desc"><b>Skills:</b> Python, JavaScript, HTML/CSS, Meteor, MongoDB, Human Computer Interaction</p><br>
     </article>
     <article>
       <hr class="hr-text" data-content="Projects">
@@ -343,9 +366,12 @@
         <li>Developed course favorites feature and logic for autocomplete of user queries with relevant keywords from course</li>
         <li>Utilized Require.js to handle dependencies, modularize script loading, and improve performance.</li>
       </ul>
-      <p class="desc"><b>Languages/Tools:</b> MongoDB, Express, Node.js, JavaScript, HTML/CSS, Python</p>
+      <p class="desc"><b>Skills:</b> Python, JavaScript, HTML/CSS, MongoDB, Node.js</p>
       <p class="desc"><a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a><br></p>
       <iframe id="video" src="https://www.youtube.com/embed/UhmVjR9pNr8?start=114" frameborder="0" allowfullscreen></iframe>
+      <img src='images/podcastonboarding.png'>
+      <img src='images/podcastsearch.png'>
+      <img src='images/podcastplayback.png'>
       <h7 class="title">2048 Board Game</h7>
       <h7 class="date">Nov 2015</h7><br><br>
       <p class="desc">Course JavaFX/Java GUI application recreating the famous sliding tile game by Gabriele Cirulli.</p>
@@ -353,6 +379,7 @@
         <li>Developed GUI and algorithm for game board using representative integer matrices.</li>
         <li>Board is scalable to multiple sizes and saved to disk in file.</li>
       </ul>
+      <img src='images/2048.png'>
     </article>
   </div>
   <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>
@@ -474,7 +501,7 @@
     var images = [
       'https://i.redd.it/tjyc0hk9m5wz.jpg',
       'https://i.redd.it/5vvyo4u8y8wz.jpg',
-      'https://i.imgur.com/lprvIce.jpg',
+      //'https://i.imgur.com/lprvIce.jpg',
       'https://i.imgur.com/jgh1fin.jpg',
       'https://c1.staticflickr.com/5/4403/36388952880_c9d523338f_o.jpg',
       'https://i.redd.it/a3ye33532fez.jpg',
@@ -488,7 +515,7 @@
     var time = now.toLocaleTimeString();
     var hour = now.getHours();
     var greeting = (hour < 6)?"Sweet dreams":(hour < 12)?"Good morning":(hour < 18)?"Good afternoon":"Good evening";
-    document.getElementById('greeting').innerHTML = greeting + ".";
+    document.getElementById('greeting').innerHTML = greeting + ", I'm Cody.";
     document.getElementById('time').innerHTML = time.replace("AM", "").replace("PM", "").replace("PST", "").replace(" ", "");
     setTimeout(updateClock, 1000);
   }

@@ -4,6 +4,7 @@ const cacheID = 'v1';
 const cacheFiles = [
   // HTML Files
     '/',
+    '/docs/CodyDoan.pdf',
     '/index.html',
     '/font-awesome/css/font-awesome.min.css',
     '/font-awesome/fonts/fontawesome-webfont.woff2'

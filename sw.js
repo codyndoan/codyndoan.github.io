@@ -6,6 +6,7 @@ const cacheFiles = [
     '/',
     '/docs/CodyDoan.pdf',
     '/index.html',
+    '/images/favicon.png',
     '/font-awesome/css/font-awesome.min.css',
     '/font-awesome/fonts/fontawesome-webfont.woff2'
 ];

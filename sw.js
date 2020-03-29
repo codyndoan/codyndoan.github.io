@@ -16,6 +16,7 @@ const cacheFiles = [
     '/assets/svgs/dog.svg',
     '/style/css/font-awesome.min.css',
     '/style/css/stars.css',
+    '/style/css/slideshow.css',
     '/style/fonts/fontawesome-webfont.woff2'
 ];
 // Service Worker Install Event

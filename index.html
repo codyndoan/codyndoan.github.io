@@ -6,8 +6,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work%20Sans" />
   <link rel="stylesheet" href="style/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style/css/stars.css">
+  <link rel="stylesheet" type="text/css" href="style/css/slideshow.css">
+
   <title>Cody Doan</title>
   <style>
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
     body {
       font-family: "Work Sans";
       height: 100%;
@@ -394,9 +399,37 @@
       <p class="desc"><a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a><br></p>
       <iframe id="video" src="https://www.youtube.com/embed/UhmVjR9pNr8?start=114" frameborder="0" allowfullscreen></iframe>
 -->
-      <img src='assets/images/podcastonboarding.png'>
-      <img src='assets/images/podcastsearch.png'>
-      <img src='assets/images/podcastplayback.png'>
+      <!-- Slideshow container -->
+      <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div><br>
+          <img src="assets/images/podcastonboarding.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div><br>
+          <img src="assets/images/podcastsearch.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div><br>
+          <img src="assets/images/podcastplayback.png" style="width:100%">
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+      <br>  
+        
       <h7 class="title">2048 Board Game</h7>
       <h7 class="date">Nov 2015</h7><br><br>
       <p class="desc">Course JavaFX/Java GUI application recreating the famous sliding tile game by Gabriele Cirulli.</p>
@@ -419,7 +452,7 @@
   </div>
 <!--  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>-->
 </div>
-<i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+<i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true" ></i>
 <script type="text/javascript" src="https://use.fontawesome.com/2c9e119ca7.js"></script>
 <script>
   if ('serviceWorker' in navigator) {
@@ -478,6 +511,7 @@
       }
   });
   document.getElementById("add-task").addEventListener("click", function() {
+    document.getElementById("glance").scrollIntoView({behavior: 'smooth'});
     var self = document.getElementById("add-task");
     var task_section = document.getElementById("task");
     var time_section = document.getElementById("glance");
@@ -554,6 +588,36 @@
     document.getElementById('time').innerHTML = time.replace("AM", "").replace("PM", "").replace("PST", "").replace(" ", "");
     setTimeout(updateClock, 1000);
   }
+    
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+    
   init();
   //updateBackground();
   updateClock(); 

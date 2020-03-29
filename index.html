@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="shortcut icon" href="/images/favicon.png" />
+  <link rel="shortcut icon" href="/assets/images/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work%20Sans" />
-  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="style/css/stars.css">
   <title>Cody Doan</title>
   <style>
     body {
@@ -30,7 +31,7 @@
     .card {
       z-index: 1;
       position: relative;
-      background-color: rgba(0,0,0,.9);
+      background-color: rgba(10,10,10,.9);
       max-width:50rem;
       width: 80%;
       margin: 5rem auto;
@@ -219,6 +220,9 @@
         display: none;
         height: 6.5rem;
       }
+      .input-icons { 
+        display: none;
+      } 
     }
     .hr-text {
       width: 100%;
@@ -258,9 +262,18 @@
       max-width: 100%;
       height: auto; 
     }
+    .input-icons { 
+        position: absolute;
+        margin-top: 50px;
+        padding: 10px; 
+        max-width: 40px !important; 
+    } 
   </style>
 </head>
 <body>
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
 <div id="bg">
   <div class="card">
     <div id="glance">
@@ -269,7 +282,8 @@
       
     </div>
     <div id="task">
-      <input id="input-task" placeholder="I need to...">
+      <img class='input-icons'src="assets/svgs/dog.svg">
+      <input id="input-task" placeholder="TODO: Walk the pug.">
       <br><br>
       <div class="load-3">
           <div class="line"></div>
@@ -286,14 +300,14 @@
         <a href="https://linkedin.com/in/codydoan" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
       </li>
       <li> 
-        <a href="https://www.facebook.com/cynd.co" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a>
+        <a href="mailto:c8doan@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
       </li>
     </ul>
-    <p id="me">I'm passionate about software engineering and solving real world problems with just the tip of my fingers.</p>
+    <p id="me">I'm currently a Cyber Security Engineer at Viasat. I'm passionate about solving problems— with interests in both security and software engineering.</p>
   </div>
   <div id="days"></div>
   <div class="card">
-    <h1><a href="docs/CodyDoan.pdf" >Resume</a></h1>
+    <h1><a href="resources/CodyDoan.pdf" target="_blank">Resume</a></h1>
     <article>
       <hr class="hr-text" data-content="Education">
       <h7 class="uni_long">University of California, San Diego</h7>
@@ -362,11 +376,13 @@
         <li>Utilized Require.js to handle dependencies, modularize script loading, and improve performance.</li>
       </ul>
       <p class="desc"><b>Skills:</b> Python, JavaScript, HTML/CSS, MongoDB, Node.js</p>
+<!--
       <p class="desc"><a id="show-demo" href="#video"><i class="fa fa-youtube-play" aria-hidden="true"></i> Watch Demo!</a><br></p>
       <iframe id="video" src="https://www.youtube.com/embed/UhmVjR9pNr8?start=114" frameborder="0" allowfullscreen></iframe>
-      <img src='images/podcastonboarding.png'>
-      <img src='images/podcastsearch.png'>
-      <img src='images/podcastplayback.png'>
+-->
+      <img src='assets/images/podcastonboarding.png'>
+      <img src='assets/images/podcastsearch.png'>
+      <img src='assets/images/podcastplayback.png'>
       <h7 class="title">2048 Board Game</h7>
       <h7 class="date">Nov 2015</h7><br><br>
       <p class="desc">Course JavaFX/Java GUI application recreating the famous sliding tile game by Gabriele Cirulli.</p>
@@ -374,10 +390,10 @@
         <li>Developed GUI and algorithm for game board using representative integer matrices.</li>
         <li>Board is scalable to multiple sizes and saved to disk in file.</li>
       </ul>
-      <img src='images/2048.png'>
+      <img src='assets/images/2048.png'>
     </article>
   </div>
-  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>
+<!--  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>-->
 </div>
 <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
 <script type="text/javascript" src="https://use.fontawesome.com/2c9e119ca7.js"></script>
@@ -409,21 +425,21 @@
       localStorage.setItem(date, JSON.stringify(tasks));
     }
   }
-  document.getElementById("show-demo").addEventListener("click", function(){
-    var video = document.getElementById("video");
-    if (video.style.height == "350px") {
-      video.style.height = "0px";
-      video.src = video.src.replace("&autoplay=1", "");
-      video.style.marginBottom = "0px";
-    } else {
-      video.style.height = "350px";
-      video.src += "&autoplay=1";
-      video.style.marginBottom = "20px";
-      setTimeout(function(){
-        //document.getElementById('bg').scrollTop += 1000;
-      }, 500);
-    }
-  });
+//  document.getElementById("show-demo").addEventListener("click", function(){
+//    var video = document.getElementById("video");
+//    if (video.style.height == "350px") {
+//      video.style.height = "0px";
+//      video.src = video.src.replace("&autoplay=1", "");
+//      video.style.marginBottom = "0px";
+//    } else {
+//      video.style.height = "350px";
+//      video.src += "&autoplay=1";
+//      video.style.marginBottom = "20px";
+//      setTimeout(function(){
+//        //document.getElementById('bg').scrollTop += 1000;
+//      }, 500);
+//    }
+//  });
   document.getElementById("input-task").addEventListener('keydown', function(event) {
       if (event.key === "Enter") {
         var task = document.getElementById("input-task").value.trim();
@@ -515,7 +531,7 @@
     setTimeout(updateClock, 1000);
   }
   init();
-  updateBackground();
+  //updateBackground();
   updateClock(); 
 </script>
 </body>

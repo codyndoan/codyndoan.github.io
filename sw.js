@@ -4,11 +4,16 @@ const cacheID = 'v1';
 const cacheFiles = [
   // HTML Files
     '/',
-    '/docs/CodyDoan.pdf',
+    '/resources/CodyDoan.pdf',
     '/index.html',
-    '/images/favicon.png',
-    '/font-awesome/css/font-awesome.min.css',
-    '/font-awesome/fonts/fontawesome-webfont.woff2'
+    '/assets/images/favicon.png',
+    '/assets/images/2048.png',
+    '/assets/images/podcastonboarding.png',
+    '/assets/images/podcastplayback.png',
+    '/assets/images/podcastsearch.png',
+    'assets/svgs/dog.svg',
+    '/style/css/font-awesome.min.css',
+    '/style/fonts/fontawesome-webfont.woff2'
 ];
 // Service Worker Install Event
 self.addEventListener('install', function(event) {

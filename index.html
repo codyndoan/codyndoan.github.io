@@ -33,7 +33,7 @@
       position: relative;
       background-color: rgba(15,15,15,.9);
       max-width:50rem;
-      width: 80%;
+      width: 85%;
       margin: 5rem auto;
       padding: 1.5rem;
       border-radius: 1rem;
@@ -277,6 +277,9 @@
         height: 330px;
         margin-bottom: 10px;
     }
+    .company_logo {
+        max-width: 120px;      
+    }
   </style>
 </head>
 <body>
@@ -284,6 +287,7 @@
 <div id="stars2"></div>
 <div id="stars3"></div>
 <div id="bg">
+<!--  Vertical Timeline TODO-->
   <div class="card">
     <div id="glance">
       <h1 id="time"></h1><br>
@@ -316,17 +320,9 @@
   </div>
   <div id="days"></div>
   <div class="card">
-      <h1>Music</h1>
-      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/1YcxXZyugPi2IOvy6txYLq" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/3stm1AqPif830ao4qjq9iJ" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/0YZjJsE3Rn2YZwsv1gILSX" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/4cNibB4y8vM3stARDV1AAq" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-      <iframe src="https://open.spotify.com/follow/1/?uri=spotify:user:1229442060&size=detail&theme=dark" width="100%" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden; margin-left: calc(50% - 100px); margin-top: 10px;" allowtransparency="true"></iframe>
-  </div>
-  <div class="card">
     <h1><a href="resources/CodyDoan.pdf" target="_blank">Resume</a></h1>
     <article>
-      <hr class="hr-text" data-content="Education">
+      <hr class="hr-text" data-content="Education"><br>
       <h7 class="uni_long">University of California, San Diego</h7>
       <h7 class="uni">UC San Diego</h7>
       <h7 class="major_long">B.S. Computer Science</h7>
@@ -348,17 +344,17 @@
             <li>A.I. Stats Approach</li>
           </ul>
       </div>
-      <br><br><br>
+      <br><br><br><br>
     </article>
     <article>
-      <hr class="hr-text" data-content="Skills">
+      <hr class="hr-text" data-content="Skills"><br>
       <h7 class="desc"><b>Languages:</b> Python, C++, C, Java, JavaScript, HTML/CSS, Assembly</h7><br>
       <h7 class="desc"><b>Tools:</b> Linux, Git, Jupyter, Node.js, Meteor, MongoDB, PostgreSQL, Vi, Wireshark</h7>
       <br><br>
     </article>
     <article>
-      <hr class="hr-text" data-content="Experience">
-      <h7 class="title">Viasat, Carlsbad, CA</h7>
+      <hr class="hr-text" data-content="Experience"><br>
+      <h7 class="title"><a href="https://www.viasat.com/" target="_blank"><img class="company_logo" src="assets/images/viasat.png"></a></h7><br><br>
       <h7 class="date">June 2018 - Sept 2018</h7><br>
       <h7 class="title">Software Engineering Intern</h7><br>
       <p class="desc">Applied machine learning models to detect anomalous and potentially malicious network behavior from IoT devices.</p>
@@ -368,8 +364,8 @@
         <li>Packaged web application and network monitoring system into rpm for ease of deployment.</li>
         <li>Crafted datasets by collecting from live IoT devices and injecting anomalous activity.</li>
       </ul>
-      <p class="desc"><b>Skills:</b> Python, Bash, JavaScript, HTML/CSS, PostgreSQL, Django, Wireshark, Networks, Security</p><br>
-      <h7 class="title">The Design Lab, UCSD</h7>
+      <p class="desc"><b>Skills:</b> Python, Bash, JavaScript, HTML/CSS, PostgreSQL, Django, Wireshark, Networks, Security</p><br><br>
+      <h7 class="title"><a href="https://designlab.ucsd.edu/" target="_blank"><img class="company_logo" src="assets/images/dlab.png"></a></h7><br><br>
       <h7 class="date">June 2017 - Sept 2017</h7><br>
       <h7 class="title">Research Assistant &amp; Web Developer</h7><br>
       <p class="desc">Developer for the crowdsourced educational platform, <a href="https://gutinstinct-prod.ucsd.edu/info/" target="_blank">Gut Instinct</a>.</p>
@@ -382,7 +378,7 @@
       <p class="desc"><b>Skills:</b> Python, JavaScript, HTML/CSS, Meteor, MongoDB, Human Computer Interaction</p><br>
     </article>
     <article>
-      <hr class="hr-text" data-content="Projects">
+      <hr class="hr-text" data-content="Projects"><br>
       <h7 class="title">Interactive Podcasts&nbsp;<a href="https://github.com/prithvin/cse110projectocr" target="_blank"><i class="fa fa-code" aria-hidden="true"></i></a></h7>
       <h7 class="date">Nov 2016 - Jan 2017</h7><br>
       <p class="desc">Offered students a web platform that allowed querying of topics from UCSD's podcasts (scoped by course). Content extracted with OCR and audio recognition linked to timestamps, allowed students to jump to just the right points within a podcast. Served 69 courses to over 380 users.</p>
@@ -409,6 +405,16 @@
       </ul>
       <img src='assets/images/2048.png'>
     </article>
+  </div>
+  <div class="card">
+      <h1>Music</h1>
+      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/1YcxXZyugPi2IOvy6txYLq" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/3stm1AqPif830ao4qjq9iJ" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<!--
+      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/0YZjJsE3Rn2YZwsv1gILSX" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe class="embedded" src="https://open.spotify.com/embed/playlist/4cNibB4y8vM3stARDV1AAq" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+-->
+      <iframe src="https://open.spotify.com/follow/1/?uri=spotify:user:1229442060&size=detail&theme=dark" width="100%" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden; margin-left: calc(50% - 100px); margin-top: 10px;" allowtransparency="true"></iframe>
   </div>
 <!--  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>-->
 </div>

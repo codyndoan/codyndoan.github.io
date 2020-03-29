@@ -11,8 +11,9 @@ const cacheFiles = [
     '/assets/images/podcastonboarding.png',
     '/assets/images/podcastplayback.png',
     '/assets/images/podcastsearch.png',
-    'assets/svgs/dog.svg',
+    '/assets/svgs/dog.svg',
     '/style/css/font-awesome.min.css',
+    '/style/css/stars.css',
     '/style/fonts/fontawesome-webfont.woff2'
 ];
 // Service Worker Install Event

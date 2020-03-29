@@ -47,6 +47,9 @@
       color: white;
       box-shadow: 2px 3px 4px rgba(0, 0, 0, .5);
     }
+    .bottom {
+      margin-bottom: 30%;
+    }
     #video {
       width: 100%;
       height: 0px;
@@ -440,7 +443,7 @@
       <img src='assets/images/2048.png'>
     </article>
   </div>
-  <div class="card">
+  <div class="card bottom">
       <h1>Music</h1>
       <iframe class="embedded" src="https://open.spotify.com/embed/playlist/1YcxXZyugPi2IOvy6txYLq" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       <iframe class="embedded" src="https://open.spotify.com/embed/playlist/3stm1AqPif830ao4qjq9iJ" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -536,6 +539,10 @@
         addTodoTask(today, task, true);
       }
     }
+  });
+  document.getElementById("bg").addEventListener("scroll", function() {
+    document.getElementsByClassName("card")[0].style.opacity = 1 - document.getElementById("bg").scrollTop / 250;
+    document.getElementsByClassName("card")[1].style.opacity = 1 - (document.getElementById("bg").scrollTop - 2500) / 250;
   });
   function initPreviousDay(date, prev) {   
     var section = document.createElement("section");

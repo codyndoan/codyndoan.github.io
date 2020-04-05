@@ -13,6 +13,7 @@ const cacheFiles = [
     '/assets/images/podcastsearch.png',
     '/assets/images/viasat.png',
     '/assets/images/dlab.png',
+    '/assets/images/rocket.png',
     '/assets/svgs/dog.svg',
     '/style/css/font-awesome.min.css',
     '/style/css/stars.css',

@@ -21,6 +21,7 @@
       overflow: hidden;
     }
     #bg {
+      z-index: 1;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -35,7 +36,7 @@
       overflow-x: hidden;
     }
     .card {
-      z-index: 1;
+      z-index: 10;
       position: relative;
       background-color: rgba(15,15,15,.9);
       max-width:50rem;
@@ -289,6 +290,19 @@
     .company_logo {
         max-width: 120px;      
     }
+    #rocket {
+        position: fixed;
+        width: 0;
+        z-index: 100;
+        left: 0;
+        bottom: 0;
+    }
+    .animate {
+        width: 80% !important;
+        left: 200% !important;
+        bottom: 200% !important;
+        transition: width 4s, left 4s, bottom 4s;
+    } 
   </style>
 </head>
 <body>
@@ -454,10 +468,22 @@
       <iframe src="https://open.spotify.com/follow/1/?uri=spotify:user:1229442060&size=detail&theme=dark" width="100%" height="56" scrolling="no" frameborder="0" style="border:none; overflow:hidden; margin-left: calc(50% - 100px); margin-top: 10px;" allowtransparency="true"></iframe>
   </div>
 <!--  <a id="email" title="Contact Me!" href="mailto:c8doan@gmail.com" target="_top">c8doan@gmail.com</a>-->
+  <img id='rocket' src='assets/images/rocket.png'>
 </div>
 <i id="add-task" class="fa fa-plus-circle fa-3x" aria-hidden="true" ></i>
 <script type="text/javascript" src="https://use.fontawesome.com/2c9e119ca7.js"></script>
+<script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
 <script>
+    
+  function animateRocket() {
+    if (!$("#rocket").hasClass("animate")) {
+        console.log('wooooOOOhooooOOO!!');
+        $("#rocket").addClass("animate");
+        setTimeout(function() {$("#rocket").removeClass("animate")}, 3000);
+    }
+  }
+  $('a').click(animateRocket);
+
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
       navigator.serviceWorker.register('/sw.js').then(function(registration) {
@@ -525,6 +551,7 @@
       task_section.style.display = "inherit";
     }
     else {
+      animateRocket();
       self.className = "fa fa-plus-circle fa-3x"
       self.style.color = "white";
       task_section.style.display = "none";

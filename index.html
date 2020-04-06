@@ -554,6 +554,7 @@
       if (event.key === "Enter") {
         var task = document.getElementById("input-task").value.trim();
         if (task != "") {
+          animateRocket();
           var order = JSON.parse(localStorage.getItem("order")) || [];
           if (order.indexOf(today) == -1) {
             order.push(today);

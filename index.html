@@ -482,7 +482,7 @@
         setTimeout(function() {$("#rocket").removeClass("animate")}, 3000);
     }
   }
-  $('a').click(animateRocket);
+//  $('a').click(animateRocket);
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
@@ -575,13 +575,13 @@
       task_section.style.display = "inherit";
     }
     else {
-      animateRocket();
       self.className = "fa fa-plus-circle fa-3x"
       self.style.color = "white";
       task_section.style.display = "none";
       time_section.style.display = "inherit";
       var task = document.getElementById("input-task").value.trim();
       if (task != "") {
+        animateRocket();
         var order = JSON.parse(localStorage.getItem("order")) || [];
         if (order.indexOf(today) == -1) {
           order.push(today);

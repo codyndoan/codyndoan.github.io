@@ -502,6 +502,7 @@
     var listItem = document.createElement("li");
     var taskItem = document.createTextNode(task);
     listItem.appendChild(taskItem);
+    listItem.addEventListener("dblclick", deleteTask);
     if (document.getElementById(date) == undefined) initPreviousDay(date, prev);
     document.getElementById(date).appendChild(listItem);
     document.getElementById("input-task").value = "";  
@@ -509,6 +510,29 @@
       var tasks = JSON.parse(localStorage.getItem(date)) || [];
       tasks.push(task);
       localStorage.setItem(date, JSON.stringify(tasks));
+    }
+  }
+    
+  function deleteTask() {
+    if ($(this).parents('.todo-list').length) {
+        var d = $(this).parent().attr("id");
+        var toRemove = $(this).text();
+        var tasks = JSON.parse(localStorage.getItem(d));
+        
+        const index = tasks.indexOf(toRemove);
+        if (index > -1) tasks.splice(index, 1);
+        
+        if (tasks.length) {
+            localStorage.setItem(d, JSON.stringify(tasks));
+        } else {
+            var order = JSON.parse(localStorage.getItem("order")) || [];
+            const index2 = order.indexOf(d);
+            if (index2 > -1) order.splice(index2, 1);
+            localStorage.setItem("order", JSON.stringify(order));
+            localStorage.removeItem(d);
+            $(this).parent().remove();
+        }
+        $(this).remove()
     }
   }
 //  document.getElementById("show-demo").addEventListener("click", function(){
